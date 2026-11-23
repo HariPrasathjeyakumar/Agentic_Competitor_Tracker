@@ -1,6 +1,6 @@
 # Competitor Tracker Evaluation Report
 
-- **Date**: 2026-11-23T13:31:05.201320+00:00
+- **Date**: 2026-11-23T13:58:43.882637+00:00
 - **Split**: `dev` (26 cases)
 - **Dry Run**: `True`
 - **Prompt Hash (SHA-256)**: `1fbd1edc4c1ef3309af5ed05903782d0bd8f6179f8ef688f72a6cc2c722b3275`
