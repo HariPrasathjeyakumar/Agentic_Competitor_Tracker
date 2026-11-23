@@ -347,26 +347,39 @@ def run_evaluation(
         calls_start = getattr(active_llm, "calls_made", 0)
         records: list[dict[str, Any]] = []
 
-        for case in cases:
+                for case in cases:
             pair_dir = labels_dir / "pairs" / case["id"]
-            diff_ev = diff_snapshots(
-                competitor="Locus",
-                page=case["page"],
-                current_path=pair_dir / "current.md",
-                previous_path=pair_dir / "previous.md",
-                min_diff_chars=min_diff_chars,
-                as_of="2026-11-23",
-            )
-            if diff_ev is None:
-                raise RuntimeError(f"Diff-Engine unexpectedly dropped labeled case {case['id']}")
-            rec = process_diff_event(
-                diff_ev,
-                config=cfg,
-                llm=active_llm,
-                ablation=abl,
-                prompts_dir=prompts_dir,
-            )
-            records.append(rec)
+            try:
+                diff_ev = diff_snapshots(
+                    competitor="Locus",
+                    page=case["page"],
+                    current_path=pair_dir / "current.md",
+                    previous_path=pair_dir / "previous.md",
+                    min_diff_chars=min_diff_chars,
+                    as_of="2026-11-23",
+                )
+                if diff_ev is None:
+                    raise RuntimeError(f"Diff-Engine unexpectedly dropped labeled case {case['id']}")
+                rec = process_diff_event(
+                    diff_ev,
+                    config=cfg,
+                    llm=active_llm,
+                    ablation=abl,
+                    prompts_dir=prompts_dir,
+                )
+                records.append(rec)
+            except Exception as exc:
+                print(f"[SKIPPED] {case['id']} ({abl}): {type(exc).__name__}: {str(exc)[:160]}")
+                records.append({
+                    "event_id": case["id"],
+                    "status": "api_error",
+                    "status_reason": f"{type(exc).__name__}",
+                    "classifier": None,
+                    "analyst": None,
+                    "strategist": None,
+                    "contested": False,
+                    "ablation": abl,
+                })
 
         calls_used = max(0, getattr(active_llm, "calls_made", 0) - calls_start)
         metrics = _compute_metrics(records, cases, abl)
