@@ -1,0 +1,10 @@
+.venv/
+.env
+__pycache__/
+*.pyc
+data/cache/
+data/snapshots/
+logs/
+*.log
+# Do NOT ignore data/feed.json, data/eval_report.json, or data/eval_report.md.
+# They are committed for the replay deployment.

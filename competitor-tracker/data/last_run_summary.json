@@ -1,0 +1,22 @@
+{
+  "as_of": "2026-11-23",
+  "ablation": "full",
+  "dry_run": false,
+  "pages_checked": 2,
+  "baseline_pages": 0,
+  "below_threshold": 0,
+  "changed_events": 2,
+  "counts": {
+    "confirmed": 2,
+    "dismissed": 0,
+    "invalid_evidence": 0,
+    "parse_failed": 0
+  },
+  "llm_calls": 6,
+  "approx_tokens": 4479,
+  "digests": [
+    "[HIGH] Locus: Locus AI Thread Summarization (strategist: differentiate, contested: no)",
+    "[HIGH] Locus: Free Tier AI Thread Summaries (strategist: monitor, contested: yes)"
+  ],
+  "ran_at": "2026-11-23T05:30:00+00:00"
+}

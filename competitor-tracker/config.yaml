@@ -1,0 +1,52 @@
+llm:
+  primary:
+    provider: gemini
+    model: gemini-2.5-flash-lite
+    temperature: 0
+  fallback:
+    provider: groq
+    model: llama-3.1-8b-instant
+    temperature: 0
+  max_tries: 6
+  backoff_base_seconds: 2
+  backoff_max_seconds: 60
+
+thresholds:
+  min_diff_chars: 60
+  max_retries: 1
+
+scout:
+  user_agent: "CompetitorTracker/0.1 (personal academic project; contact: local)"
+  timeout_seconds: 15
+  respect_robots_txt: true
+
+product:
+  name: "TeamChat"
+  description: "A team-chat app for small engineering teams with channels, threads, file sharing, and integrations. Focused on privacy and simple setup."
+  key_features:
+    - "Channels and threads"
+    - "File sharing up to 100 MB"
+    - "Integrations with GitHub and Jira"
+    - "Self-hosted deployment option"
+    - "Pro plan with unlimited message history"
+
+competitors:
+  - name: "Locus"
+    changelog_url: "http://127.0.0.1:5001/changelog"
+    pricing_url: "http://127.0.0.1:5001/pricing"
+
+paths:
+  snapshots_dir: data/snapshots
+  cache_dir: data/cache
+  feed_path: data/feed.json
+  labels_dir: data/labels
+  eval_report_json: data/eval_report.json
+  eval_report_md: data/eval_report.md
+  logs_dir: logs
+  heldout_flag_path: data/labels/heldout_used.flag
+
+evaluation:
+  dev_fraction: 0.6
+  split_seed: 42
+  held_out_locked: true
+  ablations: [full, no_classifier, single_agent]

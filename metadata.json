@@ -1,0 +1,8 @@
+{
+  "name": "Competitor Tracker",
+  "description": "Multi-agent competitive intelligence pipeline with strict information barriers, verbatim evidence verification, ablation benchmarks, and Replay/Live console.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

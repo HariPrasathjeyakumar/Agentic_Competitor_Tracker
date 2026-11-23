@@ -1,0 +1,136 @@
+{
+  "evaluated_at": "2026-11-23T13:31:05.201320+00:00",
+  "split": "dev",
+  "num_cases": 26,
+  "dry_run": true,
+  "prompt_hash": "1fbd1edc4c1ef3309af5ed05903782d0bd8f6179f8ef688f72a6cc2c722b3275",
+  "ablations": {
+    "full": {
+      "ablation": "full",
+      "cases_evaluated": 26,
+      "classifier": {
+        "tp": 10,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "analyst": {
+        "threat_accuracy": 0.4,
+        "threat_total": 10,
+        "confusion_matrix": {
+          "HIGH": {
+            "HIGH": 0,
+            "MEDIUM": 3,
+            "LOW": 0
+          },
+          "MEDIUM": {
+            "HIGH": 0,
+            "MEDIUM": 4,
+            "LOW": 0
+          },
+          "LOW": {
+            "HIGH": 0,
+            "MEDIUM": 3,
+            "LOW": 0
+          }
+        }
+      },
+      "invalid_evidence": 9,
+      "parse_failures": 0,
+      "false_alerts": 0,
+      "total_tokens": 34491,
+      "avg_tokens_per_event": 1326.6,
+      "total_llm_calls": 37,
+      "avg_llm_calls_per_event": 1.42
+    },
+    "no_classifier": {
+      "ablation": "no_classifier",
+      "cases_evaluated": 26,
+      "classifier": {
+        "tp": 10,
+        "fp": 16,
+        "fn": 0,
+        "tn": 0,
+        "precision": 0.3846,
+        "recall": 1.0,
+        "f1": 0.5556
+      },
+      "analyst": {
+        "threat_accuracy": 0.4,
+        "threat_total": 10,
+        "confusion_matrix": {
+          "HIGH": {
+            "HIGH": 0,
+            "MEDIUM": 3,
+            "LOW": 0
+          },
+          "MEDIUM": {
+            "HIGH": 0,
+            "MEDIUM": 4,
+            "LOW": 0
+          },
+          "LOW": {
+            "HIGH": 0,
+            "MEDIUM": 3,
+            "LOW": 0
+          }
+        }
+      },
+      "invalid_evidence": 9,
+      "parse_failures": 0,
+      "false_alerts": 16,
+      "total_tokens": 24617,
+      "avg_tokens_per_event": 946.8,
+      "total_llm_calls": 43,
+      "avg_llm_calls_per_event": 1.65
+    },
+    "single_agent": {
+      "ablation": "single_agent",
+      "cases_evaluated": 26,
+      "classifier": {
+        "tp": 10,
+        "fp": 1,
+        "fn": 0,
+        "tn": 15,
+        "precision": 0.9091,
+        "recall": 1.0,
+        "f1": 0.9524
+      },
+      "analyst": {
+        "threat_accuracy": 0.4,
+        "threat_total": 10,
+        "confusion_matrix": {
+          "HIGH": {
+            "HIGH": 0,
+            "MEDIUM": 3,
+            "LOW": 0
+          },
+          "MEDIUM": {
+            "HIGH": 0,
+            "MEDIUM": 4,
+            "LOW": 0
+          },
+          "LOW": {
+            "HIGH": 0,
+            "MEDIUM": 3,
+            "LOW": 0
+          }
+        }
+      },
+      "invalid_evidence": 9,
+      "parse_failures": 0,
+      "false_alerts": 1,
+      "total_tokens": 16431,
+      "avg_tokens_per_event": 632.0,
+      "total_llm_calls": 26,
+      "avg_llm_calls_per_event": 1.0
+    }
+  },
+  "paired_diff": {
+    "false_alerts_diff": -1,
+    "classifier_f1_diff": 0.0476
+  }
+}

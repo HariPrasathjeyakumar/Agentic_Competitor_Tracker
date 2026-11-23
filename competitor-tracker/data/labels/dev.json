@@ -1,0 +1,262 @@
+[
+  {
+    "id": "bf_01",
+    "page": "changelog",
+    "kind": "bug_fix",
+    "label_is_launch": false,
+    "label_threat": null,
+    "feature_name": null,
+    "added_text": "## Maintenance Patch v4.12.3 \u2014 Notification Badge Fix\nResolved a race condition in the Electron desktop wrapper where unread mention counters failed to clear after switching workspaces rapidly. Also patched a crash affecting Wayland Linux users during screen sharing cleanup.",
+    "split": "dev"
+  },
+  {
+    "id": "bf_03",
+    "page": "changelog",
+    "kind": "bug_fix",
+    "label_is_launch": false,
+    "label_threat": null,
+    "feature_name": null,
+    "added_text": "## Patch Release v4.12.1 \u2014 Search Index Sync Fix\nAddressed an indexing delay that caused edited thread messages to appear with stale text in global search results for up to ten minutes. Corrected timezone offset rendering in CSV message export logs.",
+    "split": "dev"
+  },
+  {
+    "id": "bf_04",
+    "page": "changelog",
+    "kind": "bug_fix",
+    "label_is_launch": false,
+    "label_threat": null,
+    "feature_name": null,
+    "added_text": "## Hotfix v4.12.0 \u2014 Memory Leak in Media Previews\nEliminated a memory leak triggered when scrolling rapidly through channels containing large inline PNG screenshots. Fixed keyboard focus trapping inside the emoji reaction picker on Firefox.",
+    "split": "dev"
+  },
+  {
+    "id": "bf_05",
+    "page": "changelog",
+    "kind": "bug_fix",
+    "label_is_launch": false,
+    "label_threat": null,
+    "feature_name": null,
+    "added_text": "## Reliability Patch \u2014 Webhook Retry Queue Correction\nFixed a bug where failed outbound webhooks returned HTTP 429 retries without honoring the Retry-After header. Resolved an edge case where deleted draft messages reappeared after browser refresh.",
+    "split": "dev"
+  },
+  {
+    "id": "bn_02",
+    "page": "changelog",
+    "kind": "blog_noise",
+    "label_is_launch": false,
+    "label_threat": null,
+    "feature_name": null,
+    "added_text": "## Customer Spotlight: How Northstar Robotics Runs Daily Standups\nRead our new case study profiling how a 45-person robotics team uses existing Locus channels and manual checklists to coordinate firmware releases across Munich and Austin.",
+    "split": "dev"
+  },
+  {
+    "id": "bn_03",
+    "page": "changelog",
+    "kind": "blog_noise",
+    "label_is_launch": false,
+    "label_threat": null,
+    "feature_name": null,
+    "added_text": "## We Are Hiring Principal Distributed Systems Engineers\nLocus is expanding our core messaging infrastructure group across North America and Europe. If you love Rust, Raft consensus, and low-latency WebSockets, visit our careers page to meet the team and apply.",
+    "split": "dev"
+  },
+  {
+    "id": "bn_04",
+    "page": "changelog",
+    "kind": "blog_noise",
+    "label_is_launch": false,
+    "label_threat": null,
+    "feature_name": null,
+    "added_text": "## Thinking About Self-Hosted Security: Lessons From Our Advisory Board\nOur CISO shares reflections from a recent roundtable on why regulated engineering organizations care about VPC isolation, air-gapped deployments, and auditability\u2014without announcing any new deployment product.",
+    "split": "dev"
+  },
+  {
+    "id": "bn_05",
+    "page": "changelog",
+    "kind": "blog_noise",
+    "label_is_launch": false,
+    "label_threat": null,
+    "feature_name": null,
+    "added_text": "## Community Meetup Recap: Building Developer Tools in Berlin\nThank you to the 180 engineers who joined our autumn systems engineering meetup last Thursday. Slides and lightning talk recordings covering Go profiling and local-first databases are now posted on our community hub.",
+    "split": "dev"
+  },
+  {
+    "id": "cos_01",
+    "page": "changelog",
+    "kind": "cosmetic",
+    "label_is_launch": false,
+    "label_threat": null,
+    "feature_name": null,
+    "added_text": "## Visual Refresh \u2014 Sidebar Typography & Spacing\nUpdated channel list font weights, tightened vertical row padding by 2 pixels, and introduced softer slate divider hairlines across the workspace sidebar for calmer visual contrast during long sessions.",
+    "split": "dev"
+  },
+  {
+    "id": "cos_02",
+    "page": "changelog",
+    "kind": "cosmetic",
+    "label_is_launch": false,
+    "label_threat": null,
+    "feature_name": null,
+    "added_text": "## Brand Polish \u2014 Updated App Icon & Loading Skeleton\nRefreshed the desktop dock icon with updated geometric proportions and replaced the legacy spinner animation with a neutral shimmer skeleton while threads hydrate on slow networks.",
+    "split": "dev"
+  },
+  {
+    "id": "cos_03",
+    "page": "pricing",
+    "kind": "cosmetic",
+    "label_is_launch": false,
+    "label_threat": null,
+    "feature_name": null,
+    "added_text": "## Pricing Page Copy & Card Alignment Update\nReordered bullet points across the Free, Team, and Enterprise columns for clearer side-by-side reading and updated button labels from 'Start Trial' to 'Create Workspace' with identical underlying plan entitlements.",
+    "split": "dev"
+  },
+  {
+    "id": "cos_04",
+    "page": "changelog",
+    "kind": "cosmetic",
+    "label_is_launch": false,
+    "label_threat": null,
+    "feature_name": null,
+    "added_text": "## UI Polish \u2014 Refined Thread Drawer Borders\nAdjusted border radius tokens on modal dialogs and refined timestamp contrast ratios in light theme so secondary metadata passes WCAG AA legibility guidelines across calibrated monitors.",
+    "split": "dev"
+  },
+  {
+    "id": "pc_02",
+    "page": "pricing",
+    "kind": "pricing_change",
+    "label_is_launch": false,
+    "label_threat": null,
+    "feature_name": null,
+    "added_text": "## Enterprise Minimum Seat Requirement Update\nUpdated Enterprise contract terms to require a 25-seat minimum commitment on new annual agreements and introduced quarterly invoicing options in EUR and GBP alongside USD.",
+    "split": "dev"
+  },
+  {
+    "id": "pc_03",
+    "page": "pricing",
+    "kind": "pricing_change",
+    "label_is_launch": false,
+    "label_threat": null,
+    "feature_name": null,
+    "added_text": "## Academic & Non-Profit Discount Policy Clarification\nVerified non-profit organizations and university research labs now receive a flat 40% discount on Team and Enterprise subscriptions; all included product capabilities remain unchanged.",
+    "split": "dev"
+  },
+  {
+    "id": "pc_04",
+    "page": "pricing",
+    "kind": "pricing_change",
+    "label_is_launch": false,
+    "label_threat": null,
+    "feature_name": null,
+    "added_text": "## Fair-Billing Proration Policy Update\nWe updated our billing FAQ to clarify automated seat credits when team members become inactive for 14 consecutive days, ensuring organizations only pay for active monthly contributors.",
+    "split": "dev"
+  },
+  {
+    "id": "pc_05",
+    "page": "pricing",
+    "kind": "pricing_change",
+    "label_is_launch": false,
+    "label_threat": null,
+    "feature_name": null,
+    "added_text": "## Startup Program Credits Extension\nEligible seed-stage startups affiliated with partner incubators can now apply a $1,000 billing credit toward their first year on the Team tier without altering plan limits or product features.",
+    "split": "dev"
+  },
+  {
+    "id": "rf_02",
+    "page": "changelog",
+    "kind": "real_feature",
+    "label_is_launch": true,
+    "label_threat": "HIGH",
+    "feature_name": "Two-Way GitHub & Jira Sync",
+    "added_text": "## November 19, 2026 \u2014 Two-Way GitHub & Jira Sync\nConnect repositories and Jira boards directly to Locus channels starting today. Engineers can approve pull requests, transition Jira ticket statuses, and comment on issues without leaving their chat threads.",
+    "split": "dev"
+  },
+  {
+    "id": "rf_03",
+    "page": "changelog",
+    "kind": "real_feature",
+    "label_is_launch": true,
+    "label_threat": "HIGH",
+    "feature_name": "Self-Hosted Docker & Kubernetes Edition",
+    "added_text": "## November 18, 2026 \u2014 Self-Hosted Docker & Kubernetes Edition\nLocus Self-Hosted is now generally available as a single-command Docker Compose bundle and Helm chart. Privacy-focused engineering teams can deploy Locus inside air-gapped VPCs with zero external telemetry.",
+    "split": "dev"
+  },
+  {
+    "id": "rf_05",
+    "page": "changelog",
+    "kind": "real_feature",
+    "label_is_launch": true,
+    "label_threat": "HIGH",
+    "feature_name": "500 MB Engineering Artifact Sharing",
+    "added_text": "## November 17, 2026 \u2014 500 MB Engineering Artifact Sharing\nAll paid and trial Locus workspaces can now upload build logs, crash dumps, and screen recordings up to 500 MB per file. Uploaded archives include inline previewers for JSON traces and zip manifests.",
+    "split": "dev"
+  },
+  {
+    "id": "rf_06",
+    "page": "changelog",
+    "kind": "real_feature",
+    "label_is_launch": true,
+    "label_threat": "MEDIUM",
+    "feature_name": "Live Voice Huddles with Screen Share",
+    "added_text": "## November 16, 2026 \u2014 Live Voice Huddles with Screen Share\nStart lightweight audio huddles directly inside any Locus channel with low-latency cursor-annotated screen sharing. Huddles support up to 15 concurrent engineers without spinning up an external video meeting link.",
+    "split": "dev"
+  },
+  {
+    "id": "rf_07",
+    "page": "changelog",
+    "kind": "real_feature",
+    "label_is_launch": true,
+    "label_threat": "MEDIUM",
+    "feature_name": "Automated On-Call Pager Escalation",
+    "added_text": "## November 15, 2026 \u2014 Automated On-Call Pager Escalation\nLocus Incident Channels now ship automated escalation policies that page secondary engineers if an alert goes unacknowledged for five minutes. Acknowledge or silence pages via slash commands right inside the thread.",
+    "split": "dev"
+  },
+  {
+    "id": "rf_08",
+    "page": "changelog",
+    "kind": "real_feature",
+    "label_is_launch": true,
+    "label_threat": "MEDIUM",
+    "feature_name": "Cross-Workspace Shared Channels",
+    "added_text": "## November 14, 2026 \u2014 Cross-Workspace Shared Channels\nCollaborate with external contractors and partner engineering teams using federated shared channels. Admins retain full message retention policies and can revoke external domain access in one click.",
+    "split": "dev"
+  },
+  {
+    "id": "rf_10",
+    "page": "pricing",
+    "kind": "real_feature",
+    "label_is_launch": true,
+    "label_threat": "MEDIUM",
+    "feature_name": "Zero-Config Slack Migration Importer",
+    "added_text": "## Team Plan Addition \u2014 Zero-Config Slack Migration Importer\n- Added a guided self-serve migration importer that transfers channels, threaded replies, emoji reactions, and user mappings in under ten minutes.\n- Preserves original timestamps and private channel membership rules automatically.",
+    "split": "dev"
+  },
+  {
+    "id": "rf_13",
+    "page": "changelog",
+    "kind": "real_feature",
+    "label_is_launch": true,
+    "label_threat": "LOW",
+    "feature_name": "Custom SAML Attribute Role Mapping",
+    "added_text": "## November 9, 2026 \u2014 Custom SAML Attribute Role Mapping\nIdentity administrators on Enterprise plans can now map Okta and Azure AD group attributes directly to Locus channel security groups. Role updates propagate during the next SAML assertion refresh.",
+    "split": "dev"
+  },
+  {
+    "id": "rf_14",
+    "page": "changelog",
+    "kind": "real_feature",
+    "label_is_launch": true,
+    "label_threat": "LOW",
+    "feature_name": "Desktop Status Sync with Apple Focus",
+    "added_text": "## November 7, 2026 \u2014 Desktop Status Sync with Apple Focus\nOur macOS desktop client now syncs your availability status automatically with macOS Focus modes. When Deep Work Focus is active on your Mac, Locus sets your presence to Do Not Disturb.",
+    "split": "dev"
+  },
+  {
+    "id": "rf_16",
+    "page": "changelog",
+    "kind": "real_feature",
+    "label_is_launch": true,
+    "label_threat": "LOW",
+    "feature_name": "Custom Animated Workspace Emoji Packs",
+    "added_text": "## November 6, 2026 \u2014 Custom Animated Workspace Emoji Packs\nWorkspace members can now upload WebP animated emoji packs and organize team reactions into shared folders. Includes bulk ZIP import and reaction usage analytics for community managers.",
+    "split": "dev"
+  }
+]

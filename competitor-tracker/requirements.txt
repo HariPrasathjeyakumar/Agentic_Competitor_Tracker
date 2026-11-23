@@ -1,0 +1,12 @@
+requests
+trafilatura
+beautifulsoup4
+python-dotenv
+pyyaml
+pydantic>=2,<3
+google-genai
+groq
+streamlit
+flask
+pandas
+pytest

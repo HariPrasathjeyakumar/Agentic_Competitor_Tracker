@@ -1,0 +1,142 @@
+[
+  {
+    "id": "bf_02",
+    "page": "changelog",
+    "kind": "bug_fix",
+    "label_is_launch": false,
+    "label_threat": null,
+    "feature_name": null,
+    "added_text": "## Stability Update v4.12.2 \u2014 WebSocket Reconnect Hardening\nFixed an issue where mobile clients remained stuck in 'Connecting...' after transitioning from corporate Wi-Fi to cellular LTE. Reduced duplicate push notification deliveries on iOS 19 devices.",
+    "split": "heldout"
+  },
+  {
+    "id": "bf_06",
+    "page": "changelog",
+    "kind": "bug_fix",
+    "label_is_launch": false,
+    "label_threat": null,
+    "feature_name": null,
+    "added_text": "## Desktop Bug Fix \u2014 Tray Icon & Auto-Updater\nFixed a Windows 11 system tray icon blur issue on 150% DPI scaling displays and resolved an updater permission prompt error for standard non-admin accounts. No user workflow changes are included in this patch.",
+    "split": "heldout"
+  },
+  {
+    "id": "bn_01",
+    "page": "changelog",
+    "kind": "blog_noise",
+    "label_is_launch": false,
+    "label_threat": null,
+    "feature_name": null,
+    "added_text": "## Engineering Essay: Why Async Thread Summaries Matter in 2027\nIn this week's engineering blog post, our product research team explores how distributed startups suffer from thread overload and debates theoretical design patterns for AI summarization tools\u2014no product changes are shipping yet.",
+    "split": "heldout"
+  },
+  {
+    "id": "bn_06",
+    "page": "changelog",
+    "kind": "blog_noise",
+    "label_is_launch": false,
+    "label_threat": null,
+    "feature_name": null,
+    "added_text": "## Annual Transparency & Reliability Report 2026\nWe published our yearly operational review detailing 99.98% message delivery uptime, zero security incidents, and our roadmap philosophy for keeping team chat calm and predictable next year.",
+    "split": "heldout"
+  },
+  {
+    "id": "cos_05",
+    "page": "changelog",
+    "kind": "cosmetic",
+    "label_is_launch": false,
+    "label_threat": null,
+    "feature_name": null,
+    "added_text": "## Header Navigation Rearrangement\nMoved the Help Center link from the top navigation bar into the workspace profile dropdown menu and standardized button corner radii across settings tabs without altering functionality.",
+    "split": "heldout"
+  },
+  {
+    "id": "cos_06",
+    "page": "pricing",
+    "kind": "cosmetic",
+    "label_is_launch": false,
+    "label_threat": null,
+    "feature_name": null,
+    "added_text": "## Updated Customer Logos & Typography on Pricing\nReplaced legacy partner logo SVGs in the social proof strip below the pricing grid and bumped section headings by 2px for improved visual hierarchy on ultrawide desktop displays.",
+    "split": "heldout"
+  },
+  {
+    "id": "pc_01",
+    "page": "pricing",
+    "kind": "pricing_change",
+    "label_is_launch": false,
+    "label_threat": null,
+    "feature_name": null,
+    "added_text": "## Team Plan Billing Adjustment \u2014 Annual vs. Monthly Rates\nEffective January 1, 2027, the Team plan monthly rate changes from $8 to $10 per active user per month, while annual prepayment remains locked at $8 per user per month with no changes to included features.",
+    "split": "heldout"
+  },
+  {
+    "id": "pc_06",
+    "page": "pricing",
+    "kind": "pricing_change",
+    "label_is_launch": false,
+    "label_threat": null,
+    "feature_name": null,
+    "added_text": "## Multi-Year Enterprise Price Lock Guarantee\nOrganizations signing 24-month or 36-month Enterprise agreements before quarter-end receive a contractual renewal price cap of 3% annually with identical feature entitlements.",
+    "split": "heldout"
+  },
+  {
+    "id": "rf_01",
+    "page": "changelog",
+    "kind": "real_feature",
+    "label_is_launch": true,
+    "label_threat": "HIGH",
+    "feature_name": "One-Click Thread Summarization",
+    "added_text": "## November 20, 2026 \u2014 One-Click Thread Summarization\nLocus now ships built-in one-click thread summaries across every channel and direct message thread. Engineers can condense 200-message incident threads into decisions, owners, and open blockers in under two seconds.",
+    "split": "heldout"
+  },
+  {
+    "id": "rf_04",
+    "page": "pricing",
+    "kind": "real_feature",
+    "label_is_launch": true,
+    "label_threat": "HIGH",
+    "feature_name": "Unlimited Message History on Free Tier",
+    "added_text": "## Free Tier Feature Expansion \u2014 Unlimited Message History\n- Unlimited searchable message history is now live for every Free workspace, removing the previous 90-day retention cap.\n- Teams also receive 150 MB file attachments on the Free plan at no extra cost.",
+    "split": "heldout"
+  },
+  {
+    "id": "rf_09",
+    "page": "changelog",
+    "kind": "real_feature",
+    "label_is_launch": true,
+    "label_threat": "MEDIUM",
+    "feature_name": "Semantic Channel Search",
+    "added_text": "## November 13, 2026 \u2014 Semantic Channel Search\nLocus Search now supports natural-language queries across historical channels, attachments, and code blocks. Ask questions like 'how did we rotate the staging Redis keys' and jump straight to the resolved thread.",
+    "split": "heldout"
+  },
+  {
+    "id": "rf_11",
+    "page": "changelog",
+    "kind": "real_feature",
+    "label_is_launch": true,
+    "label_threat": "MEDIUM",
+    "feature_name": "Workflow Automations Builder",
+    "added_text": "## November 12, 2026 \u2014 Workflow Automations Builder\nBuild no-code channel triggers that route bug reports, collect standup updates, and post daily release checklists automatically. Templates for engineering triage and onboarding are available immediately in workspace settings.",
+    "split": "heldout"
+  },
+  {
+    "id": "rf_12",
+    "page": "changelog",
+    "kind": "real_feature",
+    "label_is_launch": true,
+    "label_threat": "LOW",
+    "feature_name": "Enterprise FINRA & SEC Compliance Exports",
+    "added_text": "## November 11, 2026 \u2014 Enterprise FINRA & SEC Compliance Exports\nEnterprise financial institutions can now enable WORM-compliant archival exports to Smarsh and Global Relay. Requires an Enterprise contract with dedicated compliance administrator provisioning.",
+    "split": "heldout"
+  },
+  {
+    "id": "rf_15",
+    "page": "pricing",
+    "kind": "real_feature",
+    "label_is_launch": true,
+    "label_threat": "LOW",
+    "feature_name": "Multi-Region EU/APAC Data Pinning",
+    "added_text": "## Enterprise Plan Addition \u2014 Multi-Region EU/APAC Data Pinning\n- Enterprise customers can now select Frankfurt, Tokyo, or Sydney storage regions for workspace backups and search indexes.\n- Available at provisioning for organizations exceeding 500 licensed seats.",
+    "split": "heldout"
+  }
+]

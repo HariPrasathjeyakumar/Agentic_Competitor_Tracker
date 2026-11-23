@@ -1,0 +1,341 @@
+You are a senior Python engineer. Build a complete, runnable Python project called "competitor-tracker". Output every file with its full content. Do not use placeholders such as "TODO", "...", or "rest of code here". Every file must be complete and self-contained. Produce the files in the order listed in the PROJECT STRUCTURE section.
+
+=====================================================================
+1. GOAL
+=====================================================================
+A multi-agent competitive-intelligence pipeline. It monitors competitor product pages (changelog, blog, pricing). When a page changes, a chain of agents decides whether a real feature launched, how threatening it is to the user's product, and what the user should do. Every decision is written to a structured intelligence feed. The project also includes an evaluation harness that measures the system against a labeled dataset and runs ablations to prove the multi-agent design helps.
+
+=====================================================================
+2. HARD CONSTRAINTS
+=====================================================================
+- Python 3.11+. Windows-compatible: use pathlib, no Unix-only calls, no shell-specific commands in code.
+- Free tier only. Primary LLM: Google Gemini via the google-genai SDK. Fallback LLM: Groq via the groq SDK. Both are optional at runtime. If a key is missing, skip that provider. If both are missing, raise a clear error.
+- Scout, Diff-Engine, Evidence check, and Scribe are plain Python code, NOT LLM agents.
+- Classifier, Analyst, and Strategist are LLM agents. Each loads its prompt from a text file in prompts/.
+- All LLM calls go through ONE wrapper, src/llm.py.
+- Temperature 0 for all LLM calls.
+- Every agent output must be valid JSON matching a schema in src/schemas.py. Validate in code. On parse or validation failure, retry once with the error message appended to the prompt. If it fails again, mark the event status "parse_failed" and do not pass partial data forward.
+- Nothing hardcoded: model names, thresholds, competitor URLs, product data, and paths all live in config.yaml.
+- Secrets come from a .env file via python-dotenv. Never print or log API keys.
+
+=====================================================================
+3. AGENT WORKFLOW, ACCESS RULES, AND COMMUNICATION (ENFORCE IN CODE)
+=====================================================================
+Each agent sees only the fields listed in its "Reads" column. pipeline.py must build each agent's input from only those fields. This is what makes the information barriers real, not just documented.
+
+| Agent | Type | Reads (access) | Must NOT see | Writes (output) | Sends to |
+|---|---|---|---|---|---|
+| Scout | Code | Competitor URLs from config | Anything from other agents | Snapshot file per page per day | Diff-Engine |
+| Diff-Engine | Code | Two snapshots: newest and previous for the same page | Product data, LLM output | DiffEvent (added text only), or None | Classifier |
+| Classifier | LLM | Added text, competitor name | Product description, key features, roadmap, full snapshot | ClassifierOutput JSON | Pipeline: stops the event if not a launch |
+| Analyst | LLM | Classifier output, competitor name, product description, key features, added text | Full snapshot, Strategist output | AnalystOutput JSON | Evidence check |
+| Evidence check | Code | Analyst's evidence_quote, full snapshot text | Everything else | Pass, or status "invalid_evidence" | Strategist (only if pass) |
+| Strategist | LLM | Analyst JSON output, product description | Raw snapshot, added text | StrategistOutput JSON (may contest Analyst) | Scribe |
+| Scribe | Code | Full event record from all agents | Nothing is filtered | Appended feed entry, stdout digest | Feed file, Streamlit UI |
+
+Communication rules:
+1. Only the pipeline passes data between agents. Agents never call each other directly.
+2. Each hand-off is a validated object. A failed agent stops that event with its failure status. Partial data is never forwarded.
+3. Dropping is a decision and is logged. A dismissed event (Classifier says not a launch) is still written to the feed with status "dismissed", so evaluation can count false negatives. Diff-Engine drops (too small) are NOT logged to the feed, but are counted in the run summary.
+4. Each agent's output and the model that produced it are recorded in the event record.
+
+Event flow for one changed page:
+Scout saves snapshot
+ -> Diff-Engine: added text > min_diff_chars? No: count as "below_threshold", stop
+ -> Classifier: is_feature_launch? No: log "dismissed", stop
+ -> Analyst: threat + evidence_quote
+ -> Evidence check: quote present verbatim in snapshot? No: log "invalid_evidence", stop
+ -> Strategist: recommendation, may contest Analyst
+ -> Scribe: append full record to feed, print digest line
+
+=====================================================================
+4. PROJECT STRUCTURE
+=====================================================================
+competitor-tracker/
+  .env.example
+  .gitignore
+  README.md
+  requirements.txt
+  config.yaml
+  prompts/classifier.txt
+  prompts/analyst.txt
+  prompts/strategist.txt
+  src/__init__.py
+  src/llm.py
+  src/scout.py
+  src/diff_engine.py
+  src/schemas.py
+  src/classifier.py
+  src/analyst.py
+  src/strategist.py
+  src/evidence.py
+  src/scribe.py
+  src/pipeline.py
+  src/dataset.py
+  src/evaluate.py
+  mock_sites/app.py
+  mock_sites/state.json
+  mock_sites/templates/changelog.html
+  mock_sites/templates/pricing.html
+  data/labels/            (generated, folder only; add .gitkeep)
+  app.py
+  tests/test_llm.py
+  tests/test_diff.py
+  tests/test_evidence.py
+  tests/test_schemas.py
+  tests/test_pipeline.py
+  tests/test_access.py
+
+=====================================================================
+5. FILE SPECIFICATIONS
+=====================================================================
+
+--- .env.example ---
+GEMINI_API_KEY=your_gemini_key_here
+GROQ_API_KEY=your_groq_key_here
+
+--- .gitignore ---
+.venv/
+.env
+__pycache__/
+*.pyc
+data/cache/
+data/snapshots/
+logs/
+*.log
+Do NOT ignore data/feed.json, data/eval_report.json, or data/eval_report.md. They are committed for the replay deployment.
+
+--- requirements.txt ---
+requests
+trafilatura
+beautifulsoup4
+python-dotenv
+pyyaml
+google-genai
+groq
+streamlit
+flask
+pandas
+pytest
+
+--- config.yaml ---
+llm:
+  primary:
+    provider: gemini
+    model: gemini-2.5-flash-lite
+    temperature: 0
+  fallback:
+    provider: groq
+    model: llama-3.1-8b-instant
+    temperature: 0
+  max_tries: 6
+  backoff_base_seconds: 2
+  backoff_max_seconds: 60
+
+thresholds:
+  min_diff_chars: 200
+  max_retries: 1
+
+scout:
+  user_agent: "CompetitorTracker/0.1 (personal academic project; contact: local)"
+  timeout_seconds: 15
+  respect_robots_txt: true
+
+product:
+  name: "TeamChat"
+  description: "A team-chat app for small engineering teams with channels, threads, file sharing, and integrations. Focused on privacy and simple setup."
+  key_features:
+    - "Channels and threads"
+    - "File sharing up to 100 MB"
+    - "Integrations with GitHub and Jira"
+    - "Self-hosted deployment option"
+    - "Pro plan with unlimited message history"
+
+competitors:
+  - name: "Locus"
+    changelog_url: "http://127.0.0.1:5001/changelog"
+    pricing_url: "http://127.0.0.1:5001/pricing"
+
+paths:
+  snapshots_dir: data/snapshots
+  cache_dir: data/cache
+  feed_path: data/feed.json
+  labels_dir: data/labels
+  eval_report_json: data/eval_report.json
+  eval_report_md: data/eval_report.md
+  logs_dir: logs
+
+evaluation:
+  dev_fraction: 0.6
+  split_seed: 42
+  held_out_locked: true
+  ablations: [full, no_classifier, single_agent]
+
+--- prompts/classifier.txt ---
+Write the full prompt. It must:
+- State the task: decide whether the added text describes a real NEW PRODUCT FEATURE that the competitor launched.
+- Define categories: new_feature, bug_fix, cosmetic, blog_noise, pricing_change. A blog post that only discusses a feature is blog_noise unless it announces a shipped feature.
+- Include the inputs as placeholders {competitor_name} and {added_text}.
+- Include exactly 3 positive examples and 3 negative examples inline, each with its expected JSON output.
+- State: output ONLY a JSON object with keys is_feature_launch, category, feature_name, confidence. No markdown, no prose.
+- State the exact allowed values for each key.
+
+--- prompts/analyst.txt ---
+Write the full prompt. It must:
+- Give the role: a product strategist assessing a competitor's launch against the user's product.
+- Include placeholders {competitor_name}, {product_name}, {product_description}, {key_features}, {classification_json}, {added_text}.
+- Require threat_level as HIGH, MEDIUM, or LOW, judged against the user's product description and key features.
+- Require evidence_quote to be copied VERBATIM from {added_text}, between 15 and 200 characters. It must not paraphrase or invent a quote. If no suitable quote exists, use the most relevant exact sentence fragment.
+- Require reasoning of 2 to 4 sentences.
+- Require overlaps_roadmap_item to be null unless a key feature of the product directly overlaps; then name that feature.
+- State: output ONLY a JSON object with keys threat_level, reasoning, evidence_quote, overlaps_roadmap_item, confidence.
+
+--- prompts/strategist.txt ---
+Write the full prompt. It must:
+- Give the role: a pragmatic product strategist who avoids panic over noise and must check the Analyst's rating.
+- Include placeholders {product_name}, {product_description}, {analyst_json}.
+- Require recommendation as one of match, differentiate, ignore, monitor. Explain each briefly.
+- Require 1 to 4 concrete actions.
+- Require contests_analyst true or false. If true, contest_reason must explain why the HIGH or MEDIUM rating is inflated. If false, contest_reason is null.
+- State: output ONLY a JSON object with keys recommendation, actions, contests_analyst, contest_reason.
+
+--- src/llm.py ---
+Class LLMClient:
+- Constructor loads config, reads GEMINI_API_KEY and GROQ_API_KEY from .env via python-dotenv, and builds only the providers that have keys.
+- Method complete(prompt: str, agent: str) -> LLMResult. LLMResult is a dataclass with fields: text, provider, model, cached (bool), calls_made (int), approx_tokens (int, estimated as len(prompt + text) // 4).
+- Cache: disk JSON files in data/cache/, filename = sha256 of (provider + model + temperature + prompt). On cache hit, return with cached=True and make no provider call.
+- Backoff: on 429 or resource-exhausted errors, sleep base * 2^attempt plus random jitter (0 to 1 second), capped at backoff_max_seconds, up to max_tries.
+- Fallback: if the primary provider is quota-capped (daily limit message) or fails max_tries times, switch to the fallback provider for this call. Log the switch.
+- Logging: write one line per call to logs/llm.log with timestamp, agent name, provider, model, cached flag. Never write the prompt or the key.
+- Track total calls in the instance (self.calls_made) so the run summary can report usage.
+- Mark every network call with a timeout.
+- Provide a deterministic fake client class FakeLLMClient with the same interface, used by tests and by the evaluation harness dry-run mode. It returns responses from a dict keyed by agent name or from a callable.
+
+--- src/scout.py ---
+- fetch_page(url, config) -> str or None. Uses requests with the configured User-Agent and timeout. Checks robots.txt with urllib.robotparser when respect_robots_txt is true; if disallowed, log and return None.
+- extract_text(html) -> str: use trafilatura.extract; if it returns None, fall back to BeautifulSoup get_text with script and style removed.
+- run_scout(config, as_of: date) -> list of snapshot Path objects. For each competitor and each of changelog and pricing pages: fetch, extract, save to data/snapshots/<competitor_slug>/<page>/<YYYY-MM-DD>.md. If the file for that as_of date already exists, overwrite it. Return the saved paths.
+- Also provide save_snapshot_text(competitor, page, as_of, text, snapshots_dir) for use by the dataset generator.
+
+--- src/diff_engine.py ---
+- normalize(text) -> str: collapse whitespace; remove date strings like "Nov 23, 2026", "2026-11-23", "23 November 2026"; remove time strings like "09:14" or "9:14 AM"; strip lines that are only navigation or footer boilerplate (lines starting with "Copyright", "Cookie", "Privacy", "Terms").
+- @dataclass DiffEvent: competitor, page, as_of (str), old_text, new_text, added_text, char_count.
+- find_previous_snapshot(snapshot_dir, as_of) -> Path or None: the most recent snapshot strictly before as_of.
+- diff_snapshots(competitor, page, current_path, previous_path, min_diff_chars) -> DiffEvent or None. Normalize both, use difflib.SequenceMatcher or ndiff to extract added lines, join them as added_text. Return a DiffEvent only if len(added_text) >= min_diff_chars. If there is no previous snapshot, treat the run as a BASELINE and return None.
+- Provide a function run_diff(config, as_of) returning (events: list[DiffEvent], stats: dict with counts: pages_checked, baseline, below_threshold, changed).
+
+--- src/schemas.py ---
+Use pydantic v2 BaseModel with strict validation:
+- ClassifierOutput: is_feature_launch: bool; category: Literal["new_feature","bug_fix","cosmetic","blog_noise","pricing_change"]; feature_name: str | None; confidence: float between 0 and 1.
+- AnalystOutput: threat_level: Literal["HIGH","MEDIUM","LOW"]; reasoning: str (2 to 4 sentences, validate min length 20); evidence_quote: str (length 15 to 200); overlaps_roadmap_item: str | None; confidence: float between 0 and 1.
+- StrategistOutput: recommendation: Literal["match","differentiate","ignore","monitor"]; actions: list[str] with 1 to 4 items; contests_analyst: bool; contest_reason: str | None. Add a validator: if contests_analyst is true then contest_reason must be a non-empty string.
+- Helper parse_json_output(raw_text, model_cls) -> instance. It strips markdown code fences and surrounding text, locates the first JSON object, and validates.
+
+--- src/classifier.py, src/analyst.py, src/strategist.py ---
+Each exposes run_<agent>(llm, inputs: dict) -> AgentResult. AgentResult is a dataclass with fields: ok (bool), output (dict or None), status ("ok" or "parse_failed"), provider, model, error (str or None).
+Each one:
+1. Loads its prompt file from prompts/ and fills placeholders with str.replace (not str.format, so braces in text are safe).
+2. Calls llm.complete(prompt, agent=<name>).
+3. Parses and validates with schemas.parse_json_output.
+4. On failure, retries ONCE with the previous error appended: "Your previous output was invalid: <error>. Return ONLY valid JSON."
+5. On second failure, returns ok=False, status="parse_failed".
+Each agent receives ONLY the input keys listed in its spec. Pass only those keys.
+
+--- src/evidence.py ---
+- normalize_ws(text) -> str: collapse all whitespace runs to a single space, strip, and lowercase.
+- verify_quote(quote, source_text) -> bool: returns True if normalize_ws(quote) is a substring of normalize_ws(source_text). Reject quotes shorter than 15 characters.
+
+--- src/scribe.py ---
+- append_event(feed_path, event: dict): create the file as a JSON array if missing; append one event; write atomically (write to a temp file, then replace). Works with Windows paths.
+- digest_line(event) -> str: one human-readable line, e.g. "[HIGH] Locus: AI thread summarization (strategist: differentiate, contested: no)".
+- print_digest(event): prints digest_line to stdout.
+
+--- src/pipeline.py ---
+- run_monitor_cycle(config, as_of: date, llm=None, dry_run=False, ablation="full") -> dict summary.
+- Steps: run_scout -> run_diff -> per changed event:
+  - ablation "full": Classifier -> Analyst -> evidence check -> Strategist -> Scribe.
+  - ablation "no_classifier": skip Classifier, go straight to Analyst. Mark classifier output as null.
+  - ablation "single_agent": one LLM call using prompts/single_agent.txt that receives all the inputs of Classifier, Analyst, and Strategist and returns one JSON object with keys classifier, analyst, strategist, each validated against its schema. Still run the evidence check. This is the baseline for the multi-agent claim.
+- Each event record: event_id (sha256 of competitor + page + as_of + first 200 chars of added_text, first 12 hex chars), competitor, page, as_of, detected_at (ISO timestamp), classifier (output or null), analyst (output or null), strategist (output or null), status (one of: "confirmed", "dismissed", "invalid_evidence", "parse_failed"), contested (bool), models (dict agent -> "provider:model"), ablation (string), status_reason (string), tokens_approx (int).
+- Status rules: dismissed if the Classifier says not a feature launch; parse_failed if any agent fails; invalid_evidence if the quote check fails; otherwise confirmed.
+- Summary dict: pages_checked, baseline_pages, below_threshold, changed_events, counts per status, llm_calls, approx_tokens, ablation, as_of.
+- CLI entry: python -m src.pipeline --as-of YYYY-MM-DD [--ablation full|no_classifier|single_agent] [--dry-run]. Dry-run uses FakeLLMClient and writes nothing to the real feed (writes to data/feed_dryrun.json).
+
+--- src/dataset.py ---
+Labeled dataset generator. Creates synthetic competitor page versions with known ground truth, so labels are free.
+- Define a list of about 40 changes, each a dict: id, page ("changelog" or "pricing"), kind (one of: "real_feature", "bug_fix", "cosmetic", "blog_noise", "pricing_change"), label_is_launch (bool), label_threat (HIGH, MEDIUM, LOW, or null for non-launches), added_text (at least 200 characters for every change so the diff threshold lets it through), and a feature name where applicable. Cover at least 16 real_feature cases with varied threat levels (some overlapping TeamChat's key features, some not), and at least 24 negatives across the other kinds, including hard negatives (a blog post that mentions a feature without shipping it, and a pricing change that does not add a feature). Write the real text; do not write placeholders.
+- Split into dev and held-out with a seeded shuffle using evaluation.split_seed and evaluation.dev_fraction, stratified by kind.
+- Write data/labels/labels.json (full list with split field) and data/labels/dev.json and data/labels/heldout.json.
+- Write each change as a snapshot pair: a previous snapshot (base text) and a current snapshot (base text plus added_text), saved under data/labels/pairs/<change_id>/previous.md and current.md. Use realistic changelog and pricing layouts.
+- CLI: python -m src.dataset
+
+--- src/evaluate.py ---
+- Loads labels from data/labels. Runs the pipeline on each labeled pair using the same agent code, without the Scout (feed the pair snapshots directly to the Diff-Engine via its functions).
+- Modes:
+  - dev: runs on dev split only. Allowed any time. Used for prompt tuning.
+  - heldout: runs on the held-out split. Refuse to run unless the CLI flag --final is passed AND config evaluation.held_out_locked is set to false. Print a warning that held-out results must be run once after prompts are frozen. Write a frozen-prompt hash into the report (sha256 of all prompt files) so the report proves which prompts were used.
+- For each ablation in [full, no_classifier, single_agent]:
+  - Classifier metrics: precision, recall, F1 for is_feature_launch against label_is_launch.
+  - Analyst metrics (on true launches only): threat-level accuracy and a 3x3 confusion matrix.
+  - Evidence: count of invalid_evidence.
+  - Parse failures count.
+  - Approx tokens and LLM calls per event.
+  - False alerts: number of non-launches that reached status "confirmed". This is the key metric for the ablation claim.
+- Also compute the paired difference between full and single_agent on false alerts, and on classifier F1.
+- Write data/eval_report.json and data/eval_report.md. The markdown must include: prompt hash, date, split used, per-ablation metric table, confusion matrix, and a short interpretation placeholder section that is filled by plain text template, not by the LLM.
+- Support --dry-run using FakeLLMClient so the whole evaluation pipeline can be tested without API calls.
+- CLI: python -m src.evaluate --split dev [--ablation all] [--dry-run]; python -m src.evaluate --split heldout --final
+
+--- mock_sites/state.json ---
+{"locus_ai_summary_visible": false}
+
+--- mock_sites/app.py ---
+- Flask app on port 5001.
+- GET /changelog renders templates/changelog.html for fictional competitor "Locus" with 4 realistic changelog entries (dated, with titles and short bodies). The hidden entry "Locus AI: summarize any thread in one click" with body text is appended only when state.json locus_ai_summary_visible is true.
+- GET /pricing renders templates/pricing.html with 3 plans (Free, Team, Enterprise) and feature lists. When locus_ai_summary_visible is true, the Free plan also lists "AI thread summaries".
+- POST /toggle flips the state in state.json and redirects back to /changelog. Also GET /state returns the current state as JSON.
+- Read state.json on every request (no caching) so toggles take effect without restarting.
+- Make templates realistic HTML with nav, footer, cookie banner text, and a "Last updated: <date>" line, so the normalization step is actually exercised.
+
+--- app.py (Streamlit) ---
+Three tabs, and a mode switch in the sidebar:
+- Mode "Live" (default when keys exist and mock sites are reachable): tabs below are fully functional.
+- Mode "Replay" (automatic when no API keys are present, or when a user selects it): reads data/feed.json and data/eval_report.json only and never calls an LLM or Scout. This is the mode deployed on Streamlit Community Cloud.
+Tabs:
+1. Monitor: date input (as_of), ablation selector, "Run monitor cycle" button calling run_monitor_cycle, shows summary metrics. In Replay mode, show a message and the last saved summary instead.
+2. Feed: loads data/feed.json, shows each event as an expandable card with status badge, classifier/analyst/strategist fields, evidence quote, contested flag, models used, and tokens. Filter by status and competitor.
+3. Evaluation: loads data/eval_report.json and displays the per-ablation metric table, the confusion matrix, the prompt hash, and the split used.
+4. Mock site control (Live mode only): buttons to toggle the hidden Locus AI changelog via the Flask /toggle endpoint, and to show the current state.
+Use st.cache_data for loading JSON. Handle missing files with clear messages, not tracebacks.
+
+=====================================================================
+6. TESTS
+=====================================================================
+- tests/test_llm.py: cache hit returns cached=True and makes no provider call (mock the SDK); cache miss calls provider once; backoff is triggered on a simulated 429 (mock time.sleep).
+- tests/test_diff.py: whitespace collapse; date and time removal; threshold drops small diffs; baseline returns None when no previous snapshot.
+- tests/test_evidence.py: exact match passes; invented quote fails; whitespace differences pass; quote under 15 characters fails.
+- tests/test_schemas.py: valid and invalid ClassifierOutput, AnalystOutput, StrategistOutput; contests_analyst true without contest_reason fails; parse_json_output strips markdown fences.
+- tests/test_access.py: verify each agent's input is built only from its allowed keys (inspect the dict passed to the LLM via FakeLLMClient). Verify the Classifier prompt never contains the product description and the Strategist prompt never contains the raw added text.
+- tests/test_pipeline.py: with FakeLLMClient, one full cycle yields one confirmed event; a non-launch yields one dismissed event; a bad quote yields invalid_evidence; a second bad JSON yields parse_failed; the no_classifier ablation skips the Classifier.
+
+=====================================================================
+7. README.md
+=====================================================================
+Include, in this order:
+1. One-paragraph description of the project and the architecture.
+2. The agent access table from section 3.
+3. Windows PowerShell setup: python -m venv .venv; .venv\Scripts\activate; pip install -r requirements.txt; copy .env.example .env and add keys.
+4. Run order: python -m src.dataset; python -m src.evaluate --split dev --dry-run; python mock_sites/app.py in one terminal; streamlit run app.py in another; python -m src.pipeline --as-of 2026-11-23.
+5. How to run tests: pytest -v.
+6. Evaluation methodology: dev split for tuning, held-out split run once with --final after freezing prompts. Explain the three ablations.
+7. Deployment: Streamlit Community Cloud in Replay mode, using committed data/feed.json and data/eval_report.json. Keys are never needed in the cloud.
+8. Limitations: synthetic labeled data, mock competitor sites, free-tier model limits, text-only pages, no JavaScript rendering.
+
+=====================================================================
+8. OUTPUT FORMAT
+=====================================================================
+For each file: the file path as a heading, then one fenced code block containing the complete content. Follow the PROJECT STRUCTURE order. Do not skip any file. If a file is long, still output it completely.
+After all files, output:
+(a) The exact commands to run, in order, for Windows PowerShell.
+(b) A short list of assumptions you made.
+(c) A list of any constraint you could not fully satisfy and why.

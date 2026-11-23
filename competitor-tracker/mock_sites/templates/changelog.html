@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Locus Changelog</title>
+    <style>
+      body { font-family: system-ui, sans-serif; max-width: 820px; margin: 2rem auto; padding: 0 1.25rem; color: #0f172a; line-height: 1.6; }
+      header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 1rem; margin-bottom: 2rem; }
+      nav a { margin-left: 1.25rem; color: #334155; text-decoration: none; font-weight: 500; }
+      article { border-bottom: 1px solid #f1f5f9; padding: 1.25rem 0; }
+      .date { font-size: 0.85rem; color: #64748b; }
+      footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #e2e8f0; font-size: 0.85rem; color: #64748b; }
+      .cookie { background: #f8fafc; border: 1px solid #e2e8f0; padding: 0.75rem 1rem; margin-top: 2rem; font-size: 0.85rem; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <strong>Locus</strong>
+      <nav>
+        <a href="/changelog">Changelog</a>
+        <a href="/pricing">Pricing</a>
+        <a href="#docs">Docs</a>
+        <a href="#login">Sign in</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Locus Product Changelog</h1>
+      <p>Last updated: {{ last_updated }} 09:14 AM</p>
+
+      {% if locus_ai_summary_visible %}
+      <article>
+        <div class="date">November 23, 2026</div>
+        <h2>Locus AI: summarize any thread in one click</h2>
+        <p>
+          Starting today, Locus AI is available across all Free and Team workspaces. Click the Summarize button on any engineering discussion thread to generate instant decision bullets, assigned owners, and follow-up action items without leaving your channel.
+        </p>
+      </article>
+      {% endif %}
+
+      <article>
+        <div class="date">November 12, 2026</div>
+        <h2>Faster Workspace Switching with Cmd+K</h2>
+        <p>
+          Jump instantaneously between unread channels, direct messages, and saved threads using our rebuilt client-side command palette across macOS, Windows, and Linux desktop apps.
+        </p>
+      </article>
+
+      <article>
+        <div class="date">November 4, 2026</div>
+        <h2>Inline Syntax Highlighting for Build Logs</h2>
+        <p>
+          Paste multi-line stack traces, JSON payloads, and Terraform plans with automatic language detection and one-click line copying inside threaded replies.
+        </p>
+      </article>
+
+      <article>
+        <div class="date">October 22, 2026</div>
+        <h2>Custom Quiet Hours by Timezone</h2>
+        <p>
+          Configure predictable Do Not Disturb schedules per workspace timezone while allowing urgent PagerDuty incident mentions to break through when needed.
+        </p>
+      </article>
+
+      <article>
+        <div class="date">October 10, 2026</div>
+        <h2>CSV Channel Audit Exports</h2>
+        <p>
+          Workspace administrators can now download weekly channel membership and retention summaries directly from the security dashboard.
+        </p>
+      </article>
+    </main>
+
+    <div class="cookie">
+      Cookie Notice: We use essential cookies to keep your session active and remember interface preferences.
+    </div>
+
+    <footer>
+      <p>Copyright 2026 Locus Labs Inc. All rights reserved.</p>
+      <p>Privacy Policy | Terms of Service | Cookie Settings</p>
+    </footer>
+  </body>
+</html>

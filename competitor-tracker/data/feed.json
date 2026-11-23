@@ -1,0 +1,133 @@
+[
+  {
+    "event_id": "0ff15728f88a",
+    "competitor": "Locus",
+    "page": "changelog",
+    "as_of": "2026-11-23",
+    "detected_at": "2026-11-23T13:31:50.317103+00:00",
+    "classifier": {
+      "is_feature_launch": true,
+      "category": "new_feature",
+      "feature_name": "Locus AI Thread Summarization",
+      "confidence": 0.96
+    },
+    "analyst": {
+      "threat_level": "HIGH",
+      "reasoning": "Locus launched one-click AI thread summaries directly inside Free and Team workspaces. This creates immediate pressure on TeamChat channels and threads for small engineering teams.",
+      "evidence_quote": "Locus AI is available across all Free and Team workspaces",
+      "overlaps_roadmap_item": "Channels and threads",
+      "confidence": 0.91
+    },
+    "strategist": {
+      "recommendation": "differentiate",
+      "actions": [
+        "Publish privacy-preserving local thread digest roadmap note for self-hosted teams.",
+        "Highlight zero third-party LLM data retention in TeamChat onboarding."
+      ],
+      "contests_analyst": false,
+      "contest_reason": null
+    },
+    "status": "confirmed",
+    "contested": false,
+    "models": {
+      "classifier": "gemini:gemini-2.5-flash-lite",
+      "analyst": "gemini:gemini-2.5-flash-lite",
+      "strategist": "gemini:gemini-2.5-flash-lite"
+    },
+    "ablation": "full",
+    "status_reason": "Feature launch verified and strategic action recorded.",
+    "tokens_approx": 2282
+  },
+  {
+    "event_id": "0c7684138b92",
+    "competitor": "Locus",
+    "page": "pricing",
+    "as_of": "2026-11-23",
+    "detected_at": "2026-11-23T13:31:50.319825+00:00",
+    "classifier": {
+      "is_feature_launch": true,
+      "category": "new_feature",
+      "feature_name": "Free Tier AI Thread Summaries",
+      "confidence": 0.89
+    },
+    "analyst": {
+      "threat_level": "HIGH",
+      "reasoning": "Bundling AI summaries into the Free tier lowers switching friction for early-stage teams. It pressures TeamChat conversion from small engineering evaluators.",
+      "evidence_quote": "AI thread summaries",
+      "overlaps_roadmap_item": "Pro plan with unlimited message history",
+      "confidence": 0.84
+    },
+    "strategist": {
+      "recommendation": "monitor",
+      "actions": [
+        "Track Free-tier activation rates over two sprints before altering pricing.",
+        "Emphasize TeamChat unlimited self-hosted retention with zero member caps."
+      ],
+      "contests_analyst": true,
+      "contest_reason": "Free tier remains capped at 10 members and 90-day history, so HIGH threat rating overstates risk to TeamChat target teams."
+    },
+    "status": "confirmed",
+    "contested": true,
+    "models": {
+      "classifier": "gemini:gemini-2.5-flash-lite",
+      "analyst": "gemini:gemini-2.5-flash-lite",
+      "strategist": "gemini:gemini-2.5-flash-lite"
+    },
+    "ablation": "full",
+    "status_reason": "Feature launch verified and strategic action recorded.",
+    "tokens_approx": 2197
+  },
+  {
+    "event_id": "831a1086bcda",
+    "competitor": "Locus",
+    "page": "changelog",
+    "as_of": "2026-11-19",
+    "detected_at": "2026-11-23T13:31:50.320949+00:00",
+    "classifier": {
+      "is_feature_launch": false,
+      "category": "blog_noise",
+      "feature_name": null,
+      "confidence": 0.95
+    },
+    "analyst": null,
+    "strategist": null,
+    "status": "dismissed",
+    "contested": false,
+    "models": {
+      "classifier": "gemini:gemini-2.5-flash-lite"
+    },
+    "ablation": "full",
+    "status_reason": "Classified as blog_noise (not a feature launch).",
+    "tokens_approx": 1043
+  },
+  {
+    "event_id": "0a4265fb3653",
+    "competitor": "Locus",
+    "page": "changelog",
+    "as_of": "2026-11-18",
+    "detected_at": "2026-11-23T13:31:50.321944+00:00",
+    "classifier": {
+      "is_feature_launch": true,
+      "category": "new_feature",
+      "feature_name": "Two-Way GitHub Sync",
+      "confidence": 0.93
+    },
+    "analyst": {
+      "threat_level": "HIGH",
+      "reasoning": "Locus shipped bidirectional GitHub sync directly overlapping TeamChat integrations. This poses immediate competitive risk.",
+      "evidence_quote": "Full Jira and GitLab CI runner orchestration shipped",
+      "overlaps_roadmap_item": "Integrations with GitHub and Jira",
+      "confidence": 0.87
+    },
+    "strategist": null,
+    "status": "invalid_evidence",
+    "contested": false,
+    "models": {
+      "classifier": "groq:llama-3.1-8b-instant",
+      "analyst": "groq:llama-3.1-8b-instant"
+    },
+    "ablation": "full",
+    "status_reason": "Analyst evidence_quote was not found verbatim in full snapshot.",
+    "tokens_approx": 1618
+  }
+]
