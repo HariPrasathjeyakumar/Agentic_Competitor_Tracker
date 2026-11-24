@@ -10,7 +10,7 @@ from typing import Any
 
 
 def append_event(feed_path: str | Path, event: dict[str, Any]) -> None:
-    """Append one event record to feed_path JSON array using a Windows-safe atomic replace."""
+    """Append one event record to feed_path JSON array, skipping duplicate event_ids. Windows-safe atomic replace."""
     target = Path(feed_path)
     target.parent.mkdir(parents=True, exist_ok=True)
 
@@ -21,6 +21,10 @@ def append_event(feed_path: str | Path, event: dict[str, Any]) -> None:
             loaded = json.loads(raw)
             if isinstance(loaded, list):
                 events = loaded
+
+    existing_ids = {e.get("event_id") for e in events}
+    if event.get("event_id") in existing_ids:
+        return  # duplicate: same event already recorded, do nothing
 
     events.append(event)
 
