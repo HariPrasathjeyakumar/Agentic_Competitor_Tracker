@@ -4,61 +4,17 @@
   "dry_run": false,
   "pages_checked": 2,
   "baseline_pages": 0,
-  "below_threshold": 1,
-  "changed_events": 1,
+  "below_threshold": 2,
+  "changed_events": 0,
   "counts": {
-    "confirmed": 1,
+    "confirmed": 0,
     "dismissed": 0,
     "invalid_evidence": 0,
     "parse_failed": 0
   },
-  "llm_calls": 3,
-  "approx_tokens": 2600,
-  "events": [
-    {
-      "event_id": "2d7e334ed832",
-      "competitor": "Locus",
-      "page": "changelog",
-      "as_of": "2026-11-25",
-      "detected_at": "2026-11-24T09:02:08.370386+00:00",
-      "classifier": {
-        "is_feature_launch": true,
-        "category": "new_feature",
-        "feature_name": "Locus AI summarization",
-        "confidence": 0.99
-      },
-      "analyst": {
-        "threat_level": "MEDIUM",
-        "reasoning": "Locus AI summarization adds a new capability to the thread workflow that TeamChat already supports. It enhances how teams process discussion threads, which is a core feature of TeamChat, but it does not duplicate any existing key feature such as file sharing or integrations. Therefore the threat is medium.",
-        "evidence_quote": "Click the Summarize button on any engineering discussion thread to generate instant decision bullets, assigned owners, and follow-up action items without leaving your channel.",
-        "overlaps_roadmap_item": "Channels and threads",
-        "confidence": 0.9
-      },
-      "strategist": {
-        "recommendation": "differentiate",
-        "actions": [
-          "Publish a security brief that details TeamChat’s end‑to‑end encryption and on‑prem deployment options, contrasting them with Locus AI’s cloud‑based summarization processing",
-          "Accelerate the roadmap to deliver an optional on‑prem summarization add‑on that leverages existing thread infrastructure while keeping data in‑house",
-          "Conduct targeted outreach to current customers emphasizing TeamChat’s privacy guarantees and collect feedback on desired summarization features",
-          "Update sales enablement materials with a comparison matrix that highlights privacy, compliance, and data residency as key differentiators over Locus AI"
-        ],
-        "contests_analyst": true,
-        "contest_reason": "TeamChat’s end‑to‑end encryption and on‑prem deployment keep conversation data fully under customer control, a strength the analyst ignored that reduces the threat posed by Locus AI’s cloud‑based summarization."
-      },
-      "status": "confirmed",
-      "contested": true,
-      "models": {
-        "classifier": "groq:openai/gpt-oss-20b",
-        "analyst": "groq:openai/gpt-oss-20b",
-        "strategist": "groq:openai/gpt-oss-120b"
-      },
-      "ablation": "full",
-      "status_reason": "Feature launch verified and strategic action recorded.",
-      "tokens_approx": 2600
-    }
-  ],
-  "digests": [
-    "[MEDIUM] Locus: Locus AI summarization (strategist: differentiate, contested: yes)"
-  ],
-  "ran_at": "2026-11-24T09:02:11.902015+00:00"
+  "llm_calls": 0,
+  "approx_tokens": 0,
+  "events": [],
+  "digests": [],
+  "ran_at": "2026-11-24T13:57:57.927659+00:00"
 }
