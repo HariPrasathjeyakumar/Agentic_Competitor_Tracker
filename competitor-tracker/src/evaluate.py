@@ -347,7 +347,7 @@ def run_evaluation(
         calls_start = getattr(active_llm, "calls_made", 0)
         records: list[dict[str, Any]] = []
 
-                for case in cases:
+        for case in cases:
             pair_dir = labels_dir / "pairs" / case["id"]
             try:
                 diff_ev = diff_snapshots(
