@@ -1,1 +1,20 @@
-{}
+{
+  "as_of": "2026-11-27",
+  "ablation": "full",
+  "dry_run": false,
+  "pages_checked": 2,
+  "baseline_pages": 2,
+  "below_threshold": 0,
+  "changed_events": 0,
+  "counts": {
+    "confirmed": 0,
+    "dismissed": 0,
+    "invalid_evidence": 0,
+    "parse_failed": 0
+  },
+  "llm_calls": 0,
+  "approx_tokens": 0,
+  "events": [],
+  "digests": [],
+  "ran_at": "2026-11-24T15:13:11.595801+00:00"
+}
