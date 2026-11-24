@@ -4,7 +4,7 @@
     "competitor": "Locus",
     "page": "changelog",
     "as_of": "2026-11-25",
-    "detected_at": "2026-11-24T09:02:08.370386+00:00",
+    "detected_at": "2026-11-24T14:17:10.138714+00:00",
     "classifier": {
       "is_feature_launch": true,
       "category": "new_feature",
@@ -21,23 +21,23 @@
     "strategist": {
       "recommendation": "differentiate",
       "actions": [
-        "Publish a security brief that details TeamChat’s end‑to‑end encryption and on‑prem deployment options, contrasting them with Locus AI’s cloud‑based summarization processing",
-        "Accelerate the roadmap to deliver an optional on‑prem summarization add‑on that leverages existing thread infrastructure while keeping data in‑house",
-        "Conduct targeted outreach to current customers emphasizing TeamChat’s privacy guarantees and collect feedback on desired summarization features",
-        "Update sales enablement materials with a comparison matrix that highlights privacy, compliance, and data residency as key differentiators over Locus AI"
+        "Implement end-to-end encryption for all messages and file transfers to reinforce privacy.",
+        "Add a one-click channel creation wizard that auto-sets up project-specific channels and threads.",
+        "Create a privacy & security dashboard for admins to monitor data residency and compliance.",
+        "Host a privacy-focused webinar with engineering leaders to discuss data protection and TeamChat’s secure architecture."
       ],
       "contests_analyst": true,
-      "contest_reason": "TeamChat’s end‑to‑end encryption and on‑prem deployment keep conversation data fully under customer control, a strength the analyst ignored that reduces the threat posed by Locus AI’s cloud‑based summarization."
+      "contest_reason": "TeamChat’s end-to-end encryption and privacy-first design give it a competitive edge that Locus AI’s summarization feature does not address, reducing the threat level."
     },
     "status": "confirmed",
     "contested": true,
     "models": {
       "classifier": "groq:openai/gpt-oss-20b",
       "analyst": "groq:openai/gpt-oss-20b",
-      "strategist": "groq:openai/gpt-oss-120b"
+      "strategist": "groq:openai/gpt-oss-20b"
     },
     "ablation": "full",
     "status_reason": "Feature launch verified and strategic action recorded.",
-    "tokens_approx": 2600
+    "tokens_approx": 2534
   }
 ]
