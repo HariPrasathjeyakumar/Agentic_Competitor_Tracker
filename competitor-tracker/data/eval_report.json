@@ -1,9 +1,9 @@
 {
-  "evaluated_at": "2026-11-23T13:58:43.882637+00:00",
+  "evaluated_at": "2026-11-24T08:33:43.368870+00:00",
   "split": "dev",
   "num_cases": 26,
-  "dry_run": true,
-  "prompt_hash": "1fbd1edc4c1ef3309af5ed05903782d0bd8f6179f8ef688f72a6cc2c722b3275",
+  "dry_run": false,
+  "prompt_hash": "ad466be094c6ffc8862cf72194ff821ca37aef398359529cf78e23cf6b9c4088",
   "ablations": {
     "full": {
       "ablation": "full",
@@ -18,33 +18,33 @@
         "f1": 1.0
       },
       "analyst": {
-        "threat_accuracy": 0.4,
+        "threat_accuracy": 0.9,
         "threat_total": 10,
         "confusion_matrix": {
           "HIGH": {
-            "HIGH": 0,
-            "MEDIUM": 3,
+            "HIGH": 3,
+            "MEDIUM": 0,
             "LOW": 0
           },
           "MEDIUM": {
             "HIGH": 0,
-            "MEDIUM": 4,
-            "LOW": 0
+            "MEDIUM": 3,
+            "LOW": 1
           },
           "LOW": {
             "HIGH": 0,
-            "MEDIUM": 3,
-            "LOW": 0
+            "MEDIUM": 0,
+            "LOW": 3
           }
         }
       },
-      "invalid_evidence": 9,
+      "invalid_evidence": 0,
       "parse_failures": 0,
       "false_alerts": 0,
-      "total_tokens": 34491,
-      "avg_tokens_per_event": 1326.6,
-      "total_llm_calls": 37,
-      "avg_llm_calls_per_event": 1.42
+      "total_tokens": 37548,
+      "avg_tokens_per_event": 1444.2,
+      "total_llm_calls": 0,
+      "avg_llm_calls_per_event": 0.0
     },
     "no_classifier": {
       "ablation": "no_classifier",
@@ -59,53 +59,53 @@
         "f1": 0.5556
       },
       "analyst": {
-        "threat_accuracy": 0.4,
+        "threat_accuracy": 0.8,
         "threat_total": 10,
         "confusion_matrix": {
           "HIGH": {
-            "HIGH": 0,
-            "MEDIUM": 3,
+            "HIGH": 3,
+            "MEDIUM": 0,
             "LOW": 0
           },
           "MEDIUM": {
             "HIGH": 0,
-            "MEDIUM": 4,
-            "LOW": 0
+            "MEDIUM": 2,
+            "LOW": 2
           },
           "LOW": {
             "HIGH": 0,
-            "MEDIUM": 3,
-            "LOW": 0
+            "MEDIUM": 0,
+            "LOW": 3
           }
         }
       },
-      "invalid_evidence": 9,
-      "parse_failures": 0,
-      "false_alerts": 16,
-      "total_tokens": 24617,
-      "avg_tokens_per_event": 946.8,
-      "total_llm_calls": 43,
-      "avg_llm_calls_per_event": 1.65
+      "invalid_evidence": 2,
+      "parse_failures": 1,
+      "false_alerts": 13,
+      "total_tokens": 40896,
+      "avg_tokens_per_event": 1572.9,
+      "total_llm_calls": 1,
+      "avg_llm_calls_per_event": 0.04
     },
     "single_agent": {
       "ablation": "single_agent",
       "cases_evaluated": 26,
       "classifier": {
         "tp": 10,
-        "fp": 1,
+        "fp": 0,
         "fn": 0,
-        "tn": 15,
-        "precision": 0.9091,
+        "tn": 16,
+        "precision": 1.0,
         "recall": 1.0,
-        "f1": 0.9524
+        "f1": 1.0
       },
       "analyst": {
-        "threat_accuracy": 0.4,
+        "threat_accuracy": 1.0,
         "threat_total": 10,
         "confusion_matrix": {
           "HIGH": {
-            "HIGH": 0,
-            "MEDIUM": 3,
+            "HIGH": 3,
+            "MEDIUM": 0,
             "LOW": 0
           },
           "MEDIUM": {
@@ -115,22 +115,22 @@
           },
           "LOW": {
             "HIGH": 0,
-            "MEDIUM": 3,
-            "LOW": 0
+            "MEDIUM": 0,
+            "LOW": 3
           }
         }
       },
-      "invalid_evidence": 9,
-      "parse_failures": 0,
-      "false_alerts": 1,
-      "total_tokens": 16431,
-      "avg_tokens_per_event": 632.0,
-      "total_llm_calls": 26,
-      "avg_llm_calls_per_event": 1.0
+      "invalid_evidence": 1,
+      "parse_failures": 1,
+      "false_alerts": 0,
+      "total_tokens": 47400,
+      "avg_tokens_per_event": 1823.1,
+      "total_llm_calls": 1,
+      "avg_llm_calls_per_event": 0.04
     }
   },
   "paired_diff": {
-    "false_alerts_diff": -1,
-    "classifier_f1_diff": 0.0476
+    "false_alerts_diff": 0,
+    "classifier_f1_diff": 0.0
   }
 }
