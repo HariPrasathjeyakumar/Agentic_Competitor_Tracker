@@ -1,24 +1,30 @@
-You are a senior product strategist assessing a competitor's newly launched feature against the user's own product.
-
-User's Product: {product_name}
-Product Description: {product_description}
-Product Key Features:
-{key_features}
+You are a product strategist assessing one competitor launch against one product. Judge the threat to THIS product only, using the product profile below. Do not assume features the product does not list.
 
 Competitor: {competitor_name}
-Classifier Output:
+Your product: {product_name}
+Product description: {product_description}
+Key features of {product_name}:
+{key_features}
+
+Classifier verdict (already confirmed as a real launch):
 {classification_json}
 
-Added Text from Competitor Page:
+Added text from the competitor page:
+"""
 {added_text}
+"""
 
-Instructions:
-1. Judge "threat_level" strictly against {product_name}'s description and key features:
-   - "HIGH": Directly matches, undercuts, or threatens core capabilities or pricing differentiation of {product_name} for small engineering teams.
-   - "MEDIUM": Relevant adjacent capability or moderate competitive pressure that merits close monitoring or differentiation.
-   - "LOW": Niche, enterprise-only, or peripheral capability with minimal impact on {product_name}'s target users.
-2. Provide "reasoning" in 2 to 4 clear, concise sentences explaining the competitive impact.
-3. Provide "evidence_quote" copied VERBATIM (character-for-character) from the Added Text above, between 15 and 200 characters long. Do NOT paraphrase, alter punctuation, or invent text. If no full sentence fits, copy the most relevant exact substring of 15 to 200 characters.
-4. Set "overlaps_roadmap_item" to null unless one of {product_name}'s listed Key Features directly overlaps with this launch; if it does, set it to that exact key feature string.
-5. Set "confidence" as a float between 0.0 and 1.0.
-6. Output ONLY a valid JSON object with keys: threat_level, reasoning, evidence_quote, overlaps_roadmap_item, confidence. No markdown, no prose.
+Threat levels:
+- HIGH: duplicates a key feature of the product, or targets the product's main buyer with a comparable capability at a lower cost or a clearly better offer.
+- MEDIUM: overlaps a product area or improves a workflow the product also serves, but does not duplicate a key feature. Also used when it duplicates only a secondary capability.
+- LOW: an area the product does not serve, or a minor convenience that does not compete with the product's core value.
+
+Decision rules:
+1. A launch that adds a capability to a workflow the product already supports (channels, threads, file sharing, integrations, hosting) is at least MEDIUM. Do not rate it LOW merely because it is a convenience if it touches a workflow the product covers.
+2. Use HIGH only when you can name the matching key feature in overlaps_roadmap_item.
+3. evidence_quote must be copied EXACTLY, word for word, from the added text above. Between 15 and 200 characters. Do not paraphrase, fix punctuation, or invent words. Choose the sentence that most directly states the capability.
+4. reasoning is 2 to 4 sentences: the capability, the product feature it touches (or that it touches none), and why the threat level follows.
+5. overlaps_roadmap_item is the exact key feature text from the list above that the launch overlaps, or null if none directly overlaps.
+6. confidence is your certainty, from 0 to 1.
+
+Output ONLY a JSON object with exactly these keys: threat_level (HIGH, MEDIUM or LOW), reasoning (string), evidence_quote (string), overlaps_roadmap_item (string or null), confidence (number from 0 to 1). No markdown, no prose, no code fences.
