@@ -1,1 +1,64 @@
-{}
+{
+  "as_of": "2026-11-25",
+  "ablation": "full",
+  "dry_run": false,
+  "pages_checked": 2,
+  "baseline_pages": 0,
+  "below_threshold": 1,
+  "changed_events": 1,
+  "counts": {
+    "confirmed": 1,
+    "dismissed": 0,
+    "invalid_evidence": 0,
+    "parse_failed": 0
+  },
+  "llm_calls": 3,
+  "approx_tokens": 2520,
+  "events": [
+    {
+      "event_id": "2d7e334ed832",
+      "competitor": "Locus",
+      "page": "changelog",
+      "as_of": "2026-11-25",
+      "detected_at": "2026-11-24T14:30:36.465987+00:00",
+      "classifier": {
+        "is_feature_launch": true,
+        "category": "new_feature",
+        "feature_name": "Locus AI summarization",
+        "confidence": 0.99
+      },
+      "analyst": {
+        "threat_level": "MEDIUM",
+        "reasoning": "Locus AI summarization adds a new capability to the thread workflow that TeamChat already supports. It enhances how teams process discussion threads, which is a core feature of TeamChat, but it does not duplicate a key feature like unlimited history or self‑hosting. Therefore the threat is medium.",
+        "evidence_quote": "Click the Summarize button on any engineering discussion thread to generate instant decision bullets, assigned owners, and follow-up action items without leaving your channel.",
+        "overlaps_roadmap_item": "Channels and threads",
+        "confidence": 0.9
+      },
+      "strategist": {
+        "recommendation": "differentiate",
+        "actions": [
+          "Launch a privacy‑first marketing campaign highlighting end‑to‑end encryption and self‑hosting options.",
+          "Add a self‑hosting quick‑start guide and documentation to the help center.",
+          "Host a webinar for engineering teams on secure collaboration best practices, showcasing TeamChat’s simple setup.",
+          "Prioritize development of AI‑driven thread analytics to complement existing summarization features."
+        ],
+        "contests_analyst": true,
+        "contest_reason": "TeamChat’s strong privacy focus and self‑hosting option give it a competitive edge that the analyst overlooked, reducing the threat level."
+      },
+      "status": "confirmed",
+      "contested": true,
+      "models": {
+        "classifier": "groq:openai/gpt-oss-20b",
+        "analyst": "groq:openai/gpt-oss-20b",
+        "strategist": "groq:openai/gpt-oss-20b"
+      },
+      "ablation": "full",
+      "status_reason": "Feature launch verified and strategic action recorded.",
+      "tokens_approx": 2520
+    }
+  ],
+  "digests": [
+    "[MEDIUM] Locus: Locus AI summarization (strategist: differentiate, contested: yes)"
+  ],
+  "ran_at": "2026-11-24T14:30:39.685725+00:00"
+}
