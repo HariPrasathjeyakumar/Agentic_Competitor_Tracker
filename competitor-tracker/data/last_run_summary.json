@@ -1,20 +1,63 @@
 {
-  "as_of": "2026-11-27",
+  "as_of": "2026-11-25",
   "ablation": "full",
   "dry_run": false,
   "pages_checked": 2,
-  "baseline_pages": 2,
-  "below_threshold": 0,
-  "changed_events": 0,
+  "baseline_pages": 0,
+  "below_threshold": 1,
+  "changed_events": 1,
   "counts": {
-    "confirmed": 0,
+    "confirmed": 1,
     "dismissed": 0,
     "invalid_evidence": 0,
     "parse_failed": 0
   },
-  "llm_calls": 0,
-  "approx_tokens": 0,
-  "events": [],
-  "digests": [],
-  "ran_at": "2026-11-24T15:13:11.595801+00:00"
+  "llm_calls": 3,
+  "approx_tokens": 2430,
+  "events": [
+    {
+      "event_id": "2d7e334ed832",
+      "competitor": "Locus",
+      "page": "changelog",
+      "as_of": "2026-11-25",
+      "detected_at": "2026-11-24T15:15:22.054434+00:00",
+      "classifier": {
+        "is_feature_launch": true,
+        "category": "new_feature",
+        "feature_name": "Locus AI summarization",
+        "confidence": 0.99
+      },
+      "analyst": {
+        "threat_level": "MEDIUM",
+        "reasoning": "Locus AI summarization adds a new capability to the thread workflow that TeamChat already supports. It enhances thread productivity by generating decision bullets and action items, which TeamChat does not currently offer. This overlap improves a core feature area without duplicating a key feature, so the threat is medium.",
+        "evidence_quote": "summarize any thread in one click",
+        "overlaps_roadmap_item": "Channels and threads",
+        "confidence": 0.9
+      },
+      "strategist": {
+        "recommendation": "differentiate",
+        "actions": [
+          "Launch a privacy‑first marketing campaign emphasizing end‑to‑end encryption and GDPR compliance",
+          "Add a quick‑start onboarding flow that auto‑creates secure channels for new teams",
+          "Publish a comparison guide showing TeamChat’s simple setup vs. competitors’ complex integrations"
+        ],
+        "contests_analyst": true,
+        "contest_reason": "TeamChat’s end‑to‑end encryption and GDPR compliance give it a privacy advantage that Locus AI lacks, lowering the threat level."
+      },
+      "status": "confirmed",
+      "contested": true,
+      "models": {
+        "classifier": "groq:openai/gpt-oss-20b",
+        "analyst": "groq:openai/gpt-oss-20b",
+        "strategist": "groq:openai/gpt-oss-20b"
+      },
+      "ablation": "full",
+      "status_reason": "Feature launch verified and strategic action recorded.",
+      "tokens_approx": 2430
+    }
+  ],
+  "digests": [
+    "[MEDIUM] Locus: Locus AI summarization (strategist: differentiate, contested: yes)"
+  ],
+  "ran_at": "2026-11-24T15:15:24.482475+00:00"
 }

@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "event_id": "2d7e334ed832",
+    "competitor": "Locus",
+    "page": "changelog",
+    "as_of": "2026-11-25",
+    "detected_at": "2026-11-24T15:15:22.054434+00:00",
+    "classifier": {
+      "is_feature_launch": true,
+      "category": "new_feature",
+      "feature_name": "Locus AI summarization",
+      "confidence": 0.99
+    },
+    "analyst": {
+      "threat_level": "MEDIUM",
+      "reasoning": "Locus AI summarization adds a new capability to the thread workflow that TeamChat already supports. It enhances thread productivity by generating decision bullets and action items, which TeamChat does not currently offer. This overlap improves a core feature area without duplicating a key feature, so the threat is medium.",
+      "evidence_quote": "summarize any thread in one click",
+      "overlaps_roadmap_item": "Channels and threads",
+      "confidence": 0.9
+    },
+    "strategist": {
+      "recommendation": "differentiate",
+      "actions": [
+        "Launch a privacy‑first marketing campaign emphasizing end‑to‑end encryption and GDPR compliance",
+        "Add a quick‑start onboarding flow that auto‑creates secure channels for new teams",
+        "Publish a comparison guide showing TeamChat’s simple setup vs. competitors’ complex integrations"
+      ],
+      "contests_analyst": true,
+      "contest_reason": "TeamChat’s end‑to‑end encryption and GDPR compliance give it a privacy advantage that Locus AI lacks, lowering the threat level."
+    },
+    "status": "confirmed",
+    "contested": true,
+    "models": {
+      "classifier": "groq:openai/gpt-oss-20b",
+      "analyst": "groq:openai/gpt-oss-20b",
+      "strategist": "groq:openai/gpt-oss-20b"
+    },
+    "ablation": "full",
+    "status_reason": "Feature launch verified and strategic action recorded.",
+    "tokens_approx": 2430
+  }
+]
