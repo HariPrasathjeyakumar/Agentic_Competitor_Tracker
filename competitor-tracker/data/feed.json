@@ -39,5 +39,46 @@
     "ablation": "full",
     "status_reason": "Feature launch verified and strategic action recorded.",
     "tokens_approx": 2377
+  },
+  {
+    "event_id": "4093012a48bd",
+    "competitor": "Locus",
+    "page": "changelog",
+    "as_of": "2026-11-26",
+    "detected_at": "2026-11-25T13:56:42.357672+00:00",
+    "classifier": {
+      "is_feature_launch": true,
+      "category": "new_feature",
+      "feature_name": "two-way Slack and Microsoft Teams sync",
+      "confidence": 0.97
+    },
+    "analyst": {
+      "threat_level": "MEDIUM",
+      "reasoning": "Locus’s launch adds a two‑way sync between Slack and Microsoft Teams, which is an integration capability that TeamChat also supports (integrations with GitHub and Jira). The new feature does not duplicate a key TeamChat feature but expands the integration workflow, making it a medium‑level threat.",
+      "evidence_quote": "The new integration enables seamless two-way synchronization between Slack and Microsoft Teams, allowing messages and updates to stay consistent across both platforms.",
+      "overlaps_roadmap_item": "Integrations with GitHub and Jira",
+      "confidence": 0.9
+    },
+    "strategist": {
+      "recommendation": "differentiate",
+      "actions": [
+        "Launch a privacy‑first marketing campaign showcasing end‑to‑end encryption and data residency",
+        "Publish a Zero‑Setup onboarding guide to reduce friction for new teams",
+        "Release a compliance whitepaper comparing TeamChat’s GDPR/SOC 2 certifications with competitors",
+        "Host a quarterly privacy‑focused webinar series featuring engineering teams using TeamChat"
+      ],
+      "contests_analyst": true,
+      "contest_reason": "TeamChat’s privacy‑first architecture and effortless onboarding give it a competitive edge for privacy‑conscious engineering teams, reducing the impact of Locus’s Slack/Teams sync feature."
+    },
+    "status": "confirmed",
+    "contested": true,
+    "models": {
+      "classifier": "groq:openai/gpt-oss-20b",
+      "analyst": "groq:openai/gpt-oss-20b",
+      "strategist": "groq:openai/gpt-oss-20b"
+    },
+    "ablation": "full",
+    "status_reason": "Feature launch verified and strategic action recorded.",
+    "tokens_approx": 2402
   }
 ]

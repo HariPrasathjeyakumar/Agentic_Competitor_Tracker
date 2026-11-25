@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-25",
+  "as_of": "2026-11-26",
   "ablation": "full",
   "dry_run": false,
   "pages_checked": 2,
@@ -13,37 +13,37 @@
     "parse_failed": 0
   },
   "llm_calls": 3,
-  "approx_tokens": 2377,
+  "approx_tokens": 2402,
   "events": [
     {
-      "event_id": "97728ec8f99a",
+      "event_id": "4093012a48bd",
       "competitor": "Locus",
       "page": "changelog",
-      "as_of": "2026-11-25",
-      "detected_at": "2026-11-25T13:48:03.128029+00:00",
+      "as_of": "2026-11-26",
+      "detected_at": "2026-11-25T13:56:42.357672+00:00",
       "classifier": {
         "is_feature_launch": true,
         "category": "new_feature",
-        "feature_name": "intelligent file organization",
-        "confidence": 0.95
+        "feature_name": "two-way Slack and Microsoft Teams sync",
+        "confidence": 0.97
       },
       "analyst": {
         "threat_level": "MEDIUM",
-        "reasoning": "The new feature adds intelligent file organization, which enhances the file sharing workflow that TeamChat already supports. It does not duplicate a key feature like unlimited history or self‑hosting, but it improves a core capability. Therefore the threat is medium.",
-        "evidence_quote": "intelligent file organization feature that automatically categorizes uploaded documents for easier access.",
-        "overlaps_roadmap_item": "File sharing up to 100 MB",
+        "reasoning": "Locus’s launch adds a two‑way sync between Slack and Microsoft Teams, which is an integration capability that TeamChat also supports (integrations with GitHub and Jira). The new feature does not duplicate a key TeamChat feature but expands the integration workflow, making it a medium‑level threat.",
+        "evidence_quote": "The new integration enables seamless two-way synchronization between Slack and Microsoft Teams, allowing messages and updates to stay consistent across both platforms.",
+        "overlaps_roadmap_item": "Integrations with GitHub and Jira",
         "confidence": 0.9
       },
       "strategist": {
         "recommendation": "differentiate",
         "actions": [
-          "Launch a privacy-focused marketing campaign emphasizing end-to-end encryption and zero-configuration setup.",
-          "Add a 'Privacy & Compliance' section to the onboarding flow to educate new users on data protection.",
-          "Host a quarterly privacy audit webinar for engineering teams to demonstrate our commitment to secure collaboration.",
-          "Prioritize the rollout of a self-hosted deployment option to further differentiate from competitors."
+          "Launch a privacy‑first marketing campaign showcasing end‑to‑end encryption and data residency",
+          "Publish a Zero‑Setup onboarding guide to reduce friction for new teams",
+          "Release a compliance whitepaper comparing TeamChat’s GDPR/SOC 2 certifications with competitors",
+          "Host a quarterly privacy‑focused webinar series featuring engineering teams using TeamChat"
         ],
         "contests_analyst": true,
-        "contest_reason": "TeamChat’s privacy‑first architecture and zero‑configuration onboarding give us a competitive moat that the new intelligent file organization does not threaten, reducing the overall threat level."
+        "contest_reason": "TeamChat’s privacy‑first architecture and effortless onboarding give it a competitive edge for privacy‑conscious engineering teams, reducing the impact of Locus’s Slack/Teams sync feature."
       },
       "status": "confirmed",
       "contested": true,
@@ -54,11 +54,11 @@
       },
       "ablation": "full",
       "status_reason": "Feature launch verified and strategic action recorded.",
-      "tokens_approx": 2377
+      "tokens_approx": 2402
     }
   ],
   "digests": [
-    "[MEDIUM] Locus: intelligent file organization (strategist: differentiate, contested: yes)"
+    "[MEDIUM] Locus: two-way Slack and Microsoft Teams sync (strategist: differentiate, contested: yes)"
   ],
-  "ran_at": "2026-11-25T13:48:06.216352+00:00"
+  "ran_at": "2026-11-25T13:56:45.612744+00:00"
 }
