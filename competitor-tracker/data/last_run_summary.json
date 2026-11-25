@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-29",
+  "as_of": "2026-12-01",
   "ablation": "full",
   "dry_run": false,
   "pages_checked": 2,
@@ -16,5 +16,5 @@
   "approx_tokens": 0,
   "events": [],
   "digests": [],
-  "ran_at": "2026-11-25T11:34:30.846164+00:00"
+  "ran_at": "2026-11-25T11:42:10.617206+00:00"
 }
