@@ -120,5 +120,45 @@
     "ablation": "full",
     "status_reason": "Feature launch verified and strategic action recorded.",
     "tokens_approx": 2427
+  },
+  {
+    "event_id": "66177f21c9db",
+    "competitor": "Locus",
+    "page": "changelog",
+    "as_of": "2026-11-27",
+    "detected_at": "2026-11-25T11:28:24.134351+00:00",
+    "classifier": {
+      "is_feature_launch": true,
+      "category": "new_feature",
+      "feature_name": "Helene 2T AI model",
+      "confidence": 0.99
+    },
+    "analyst": {
+      "threat_level": "LOW",
+      "reasoning": "The launch introduces an AI model for complex mathematical functions, which does not overlap any of TeamChat’s core features such as channels, threads, file sharing, integrations, or self‑hosting. It adds a capability unrelated to TeamChat’s workflow, so it poses no direct threat.",
+      "evidence_quote": "It can perform complex mathematical functions with graphical representation of the mathematical expressions.",
+      "overlaps_roadmap_item": null,
+      "confidence": 0.95
+    },
+    "strategist": {
+      "recommendation": "differentiate",
+      "actions": [
+        "Highlight TeamChat’s end‑to‑end encryption and self‑hosting options in marketing materials to reinforce privacy as a core differentiator.",
+        "Add a new integration with GitHub/GitLab to streamline code review discussions directly within channels.",
+        "Launch a privacy‑focused webinar for engineering teams to showcase compliance and data control, positioning TeamChat as the secure choice."
+      ],
+      "contests_analyst": false,
+      "contest_reason": null
+    },
+    "status": "confirmed",
+    "contested": false,
+    "models": {
+      "classifier": "groq:openai/gpt-oss-20b",
+      "analyst": "groq:openai/gpt-oss-20b",
+      "strategist": "groq:openai/gpt-oss-20b"
+    },
+    "ablation": "full",
+    "status_reason": "Feature launch verified and strategic action recorded.",
+    "tokens_approx": 2350
   }
 ]

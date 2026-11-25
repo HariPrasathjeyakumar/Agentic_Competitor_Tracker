@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-25",
+  "as_of": "2026-11-27",
   "ablation": "full",
   "dry_run": false,
   "pages_checked": 2,
@@ -13,40 +13,39 @@
     "parse_failed": 0
   },
   "llm_calls": 3,
-  "approx_tokens": 2427,
+  "approx_tokens": 2350,
   "events": [
     {
-      "event_id": "a6d482b7a537",
+      "event_id": "66177f21c9db",
       "competitor": "Locus",
       "page": "changelog",
-      "as_of": "2026-11-25",
-      "detected_at": "2026-11-25T11:09:20.140682+00:00",
+      "as_of": "2026-11-27",
+      "detected_at": "2026-11-25T11:28:24.134351+00:00",
       "classifier": {
         "is_feature_launch": true,
         "category": "new_feature",
-        "feature_name": "Summarize button",
+        "feature_name": "Helene 2T AI model",
         "confidence": 0.99
       },
       "analyst": {
-        "threat_level": "MEDIUM",
-        "reasoning": "The Summarize button adds a new capability to engineering discussion threads, which TeamChat already supports. It enhances the thread workflow but does not duplicate a core feature like unlimited history or self-hosting. Therefore the threat is medium.",
-        "evidence_quote": "Click the Summarize button on any engineering discussion thread to generate instant decision bullets, assigned owners, and follow-up action items without leaving your channel.",
-        "overlaps_roadmap_item": "Threads",
+        "threat_level": "LOW",
+        "reasoning": "The launch introduces an AI model for complex mathematical functions, which does not overlap any of TeamChat’s core features such as channels, threads, file sharing, integrations, or self‑hosting. It adds a capability unrelated to TeamChat’s workflow, so it poses no direct threat.",
+        "evidence_quote": "It can perform complex mathematical functions with graphical representation of the mathematical expressions.",
+        "overlaps_roadmap_item": null,
         "confidence": 0.95
       },
       "strategist": {
         "recommendation": "differentiate",
         "actions": [
-          "Update the product website to feature a “Privacy‑First, Self‑Hosted” banner highlighting end‑to‑end encryption.",
-          "Release a new “Secure Thread” demo video showing how TeamChat protects discussion data during summarization.",
-          "Host a 30‑minute webinar for small engineering teams on secure collaboration, focusing on TeamChat’s simple setup and privacy controls.",
-          "Add a “Privacy & Compliance” milestone to the roadmap and assign the compliance team to monitor competitor’s feature adoption."
+          "Highlight TeamChat’s end‑to‑end encryption and self‑hosting options in marketing materials to reinforce privacy as a core differentiator.",
+          "Add a new integration with GitHub/GitLab to streamline code review discussions directly within channels.",
+          "Launch a privacy‑focused webinar for engineering teams to showcase compliance and data control, positioning TeamChat as the secure choice."
         ],
-        "contests_analyst": true,
-        "contest_reason": "TeamChat’s self‑hosted, end‑to‑end encrypted deployment gives privacy guarantees that the competitor’s cloud‑only solution lacks, reducing the competitive threat."
+        "contests_analyst": false,
+        "contest_reason": null
       },
       "status": "confirmed",
-      "contested": true,
+      "contested": false,
       "models": {
         "classifier": "groq:openai/gpt-oss-20b",
         "analyst": "groq:openai/gpt-oss-20b",
@@ -54,11 +53,11 @@
       },
       "ablation": "full",
       "status_reason": "Feature launch verified and strategic action recorded.",
-      "tokens_approx": 2427
+      "tokens_approx": 2350
     }
   ],
   "digests": [
-    "[MEDIUM] Locus: Summarize button (strategist: differentiate, contested: yes)"
+    "[LOW] Locus: Helene 2T AI model (strategist: differentiate, contested: no)"
   ],
-  "ran_at": "2026-11-25T11:09:23.128100+00:00"
+  "ran_at": "2026-11-25T11:28:27.236539+00:00"
 }
