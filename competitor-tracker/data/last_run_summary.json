@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-12-05",
+  "as_of": "2026-12-04",
   "ablation": "full",
   "dry_run": false,
   "pages_checked": 2,
@@ -12,15 +12,15 @@
     "invalid_evidence": 0,
     "parse_failed": 0
   },
-  "llm_calls": 3,
+  "llm_calls": 0,
   "approx_tokens": 2333,
   "events": [
     {
-      "event_id": "f8bec190ed9d",
+      "event_id": "4ab7b15da4c2",
       "competitor": "Locus",
       "page": "changelog",
-      "as_of": "2026-12-05",
-      "detected_at": "2026-11-25T12:17:51.414118+00:00",
+      "as_of": "2026-12-04",
+      "detected_at": "2026-11-25T12:24:40.149240+00:00",
       "classifier": {
         "is_feature_launch": true,
         "category": "new_feature",
@@ -60,5 +60,5 @@
   "digests": [
     "[MEDIUM] Locus: AI-powered conversation summarization (strategist: differentiate, contested: yes)"
   ],
-  "ran_at": "2026-11-25T12:17:53.943764+00:00"
+  "ran_at": "2026-11-25T12:24:40.151987+00:00"
 }
