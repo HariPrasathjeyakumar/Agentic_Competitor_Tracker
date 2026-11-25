@@ -1,1 +1,43 @@
-[]
+[
+  {
+    "event_id": "ca44272e9885",
+    "competitor": "Locus",
+    "page": "changelog",
+    "as_of": "2026-12-02",
+    "detected_at": "2026-11-25T11:59:15.969120+00:00",
+    "classifier": {
+      "is_feature_launch": true,
+      "category": "new_feature",
+      "feature_name": "file sharing for free tier users",
+      "confidence": 0.99
+    },
+    "analyst": {
+      "threat_level": "MEDIUM",
+      "reasoning": "Locus’s launch adds file sharing to its free tier, directly overlapping TeamChat’s file sharing feature. While the capacity is lower (25 MB vs. 100 MB), the feature duplication on the same buyer segment creates a moderate competitive pressure.",
+      "evidence_quote": "Starting today, Team members on the free plan can share files up to 25 MB directly in any channel, with no paid subscription required.",
+      "overlaps_roadmap_item": "File sharing up to 100 MB",
+      "confidence": 0.9
+    },
+    "strategist": {
+      "recommendation": "differentiate",
+      "actions": [
+        "Launch a privacy‑focused marketing campaign highlighting end‑to‑end encryption and zero‑logging policy",
+        "Release a quick‑start guide and one‑click onboarding flow to emphasize simple setup",
+        "Expand integration catalog with popular engineering tools (e.g., GitHub, Jira) to reinforce ecosystem advantage",
+        "Conduct a customer survey to gather feedback on privacy concerns and use insights to prioritize next‑gen security features"
+      ],
+      "contests_analyst": true,
+      "contest_reason": "TeamChat’s end‑to‑end encryption and zero‑logging policy give it a privacy advantage that the competitor lacks, reducing the threat from the free‑tier file sharing feature."
+    },
+    "status": "confirmed",
+    "contested": true,
+    "models": {
+      "classifier": "groq:openai/gpt-oss-20b",
+      "analyst": "groq:openai/gpt-oss-20b",
+      "strategist": "groq:openai/gpt-oss-20b"
+    },
+    "ablation": "full",
+    "status_reason": "Feature launch verified and strategic action recorded.",
+    "tokens_approx": 2378
+  }
+]
