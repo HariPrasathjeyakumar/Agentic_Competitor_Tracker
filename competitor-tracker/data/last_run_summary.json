@@ -13,36 +13,37 @@
     "parse_failed": 0
   },
   "llm_calls": 3,
-  "approx_tokens": 2430,
+  "approx_tokens": 2411,
   "events": [
     {
-      "event_id": "2d7e334ed832",
+      "event_id": "8e7a3b643bc8",
       "competitor": "Locus",
       "page": "changelog",
       "as_of": "2026-11-25",
-      "detected_at": "2026-11-24T15:15:22.054434+00:00",
+      "detected_at": "2026-11-25T11:03:58.882079+00:00",
       "classifier": {
         "is_feature_launch": true,
         "category": "new_feature",
-        "feature_name": "Locus AI summarization",
+        "feature_name": "Helene 2T AI model",
         "confidence": 0.99
       },
       "analyst": {
-        "threat_level": "MEDIUM",
-        "reasoning": "Locus AI summarization adds a new capability to the thread workflow that TeamChat already supports. It enhances thread productivity by generating decision bullets and action items, which TeamChat does not currently offer. This overlap improves a core feature area without duplicating a key feature, so the threat is medium.",
-        "evidence_quote": "summarize any thread in one click",
-        "overlaps_roadmap_item": "Channels and threads",
-        "confidence": 0.9
+        "threat_level": "LOW",
+        "reasoning": "The Helene 2T AI model adds advanced mathematical and graphical capabilities, which are not part of TeamChat’s core features such as channels, threads, file sharing, integrations, or self‑hosting. Therefore it does not duplicate or improve any workflow that TeamChat serves.",
+        "evidence_quote": "It can perform complex mathematical functions with graphical representation of the mathematical expressions.",
+        "overlaps_roadmap_item": null,
+        "confidence": 0.95
       },
       "strategist": {
         "recommendation": "differentiate",
         "actions": [
-          "Launch a privacy‑first marketing campaign emphasizing end‑to‑end encryption and GDPR compliance",
-          "Add a quick‑start onboarding flow that auto‑creates secure channels for new teams",
-          "Publish a comparison guide showing TeamChat’s simple setup vs. competitors’ complex integrations"
+          "Highlight TeamChat’s end‑to‑end encryption and self‑hosting capabilities in marketing materials to reinforce privacy advantage.",
+          "Publish a quick‑start guide for self‑hosting to lower onboarding friction for small engineering teams.",
+          "Integrate with popular code repositories (GitHub, GitLab) to streamline file sharing and collaboration.",
+          "Run a privacy‑focused webinar series featuring customer success stories to showcase compliance and data control."
         ],
         "contests_analyst": true,
-        "contest_reason": "TeamChat’s end‑to‑end encryption and GDPR compliance give it a privacy advantage that Locus AI lacks, lowering the threat level."
+        "contest_reason": "TeamChat’s built‑in privacy and self‑hosting options give it a competitive edge for privacy‑conscious engineering teams, reducing the impact of Helene’s AI features."
       },
       "status": "confirmed",
       "contested": true,
@@ -53,11 +54,11 @@
       },
       "ablation": "full",
       "status_reason": "Feature launch verified and strategic action recorded.",
-      "tokens_approx": 2430
+      "tokens_approx": 2411
     }
   ],
   "digests": [
-    "[MEDIUM] Locus: Locus AI summarization (strategist: differentiate, contested: yes)"
+    "[LOW] Locus: Helene 2T AI model (strategist: differentiate, contested: yes)"
   ],
-  "ran_at": "2026-11-24T15:15:24.482475+00:00"
+  "ran_at": "2026-11-25T11:04:02.038917+00:00"
 }

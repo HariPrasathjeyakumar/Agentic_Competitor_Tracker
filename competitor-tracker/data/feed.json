@@ -38,5 +38,46 @@
     "ablation": "full",
     "status_reason": "Feature launch verified and strategic action recorded.",
     "tokens_approx": 2430
+  },
+  {
+    "event_id": "8e7a3b643bc8",
+    "competitor": "Locus",
+    "page": "changelog",
+    "as_of": "2026-11-25",
+    "detected_at": "2026-11-25T11:03:58.882079+00:00",
+    "classifier": {
+      "is_feature_launch": true,
+      "category": "new_feature",
+      "feature_name": "Helene 2T AI model",
+      "confidence": 0.99
+    },
+    "analyst": {
+      "threat_level": "LOW",
+      "reasoning": "The Helene 2T AI model adds advanced mathematical and graphical capabilities, which are not part of TeamChat’s core features such as channels, threads, file sharing, integrations, or self‑hosting. Therefore it does not duplicate or improve any workflow that TeamChat serves.",
+      "evidence_quote": "It can perform complex mathematical functions with graphical representation of the mathematical expressions.",
+      "overlaps_roadmap_item": null,
+      "confidence": 0.95
+    },
+    "strategist": {
+      "recommendation": "differentiate",
+      "actions": [
+        "Highlight TeamChat’s end‑to‑end encryption and self‑hosting capabilities in marketing materials to reinforce privacy advantage.",
+        "Publish a quick‑start guide for self‑hosting to lower onboarding friction for small engineering teams.",
+        "Integrate with popular code repositories (GitHub, GitLab) to streamline file sharing and collaboration.",
+        "Run a privacy‑focused webinar series featuring customer success stories to showcase compliance and data control."
+      ],
+      "contests_analyst": true,
+      "contest_reason": "TeamChat’s built‑in privacy and self‑hosting options give it a competitive edge for privacy‑conscious engineering teams, reducing the impact of Helene’s AI features."
+    },
+    "status": "confirmed",
+    "contested": true,
+    "models": {
+      "classifier": "groq:openai/gpt-oss-20b",
+      "analyst": "groq:openai/gpt-oss-20b",
+      "strategist": "groq:openai/gpt-oss-20b"
+    },
+    "ablation": "full",
+    "status_reason": "Feature launch verified and strategic action recorded.",
+    "tokens_approx": 2411
   }
 ]
