@@ -39,5 +39,46 @@
     "ablation": "full",
     "status_reason": "Feature launch verified and strategic action recorded.",
     "tokens_approx": 2453
+  },
+  {
+    "event_id": "f8bec190ed9d",
+    "competitor": "Locus",
+    "page": "changelog",
+    "as_of": "2026-12-05",
+    "detected_at": "2026-11-25T12:17:51.414118+00:00",
+    "classifier": {
+      "is_feature_launch": true,
+      "category": "new_feature",
+      "feature_name": "AI-powered conversation summarization",
+      "confidence": 0.99
+    },
+    "analyst": {
+      "threat_level": "MEDIUM",
+      "reasoning": "The new AI-powered summarization capability can be applied to conversations within channels and threads, which TeamChat already supports. However, summarization is not a core feature listed for TeamChat, so it does not duplicate a key offering. Thus the threat is moderate.",
+      "evidence_quote": "The company has launched an AI-powered feature that automatically summarizes lengthy chatbot conversations into concise key points.",
+      "overlaps_roadmap_item": null,
+      "confidence": 0.9
+    },
+    "strategist": {
+      "recommendation": "differentiate",
+      "actions": [
+        "Enhance end-to-end encryption to support zero-knowledge storage for all messages and files",
+        "Introduce a 5-minute quick-start wizard that auto-configures channels and integrations",
+        "Launch a privacy-first marketing campaign highlighting GDPR/CCPA compliance",
+        "Run a customer feedback loop focused on onboarding friction to iterate on setup simplicity"
+      ],
+      "contests_analyst": true,
+      "contest_reason": "TeamChat’s end‑to‑end encryption and zero‑knowledge storage provide a privacy guarantee that the competitor’s summarization feature does not address, lowering the threat level."
+    },
+    "status": "confirmed",
+    "contested": true,
+    "models": {
+      "classifier": "groq:openai/gpt-oss-20b",
+      "analyst": "groq:openai/gpt-oss-20b",
+      "strategist": "groq:openai/gpt-oss-20b"
+    },
+    "ablation": "full",
+    "status_reason": "Feature launch verified and strategic action recorded.",
+    "tokens_approx": 2333
   }
 ]
