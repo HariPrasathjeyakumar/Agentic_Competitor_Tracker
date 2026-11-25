@@ -79,5 +79,46 @@
     "ablation": "full",
     "status_reason": "Feature launch verified and strategic action recorded.",
     "tokens_approx": 2411
+  },
+  {
+    "event_id": "a6d482b7a537",
+    "competitor": "Locus",
+    "page": "changelog",
+    "as_of": "2026-11-25",
+    "detected_at": "2026-11-25T11:09:20.140682+00:00",
+    "classifier": {
+      "is_feature_launch": true,
+      "category": "new_feature",
+      "feature_name": "Summarize button",
+      "confidence": 0.99
+    },
+    "analyst": {
+      "threat_level": "MEDIUM",
+      "reasoning": "The Summarize button adds a new capability to engineering discussion threads, which TeamChat already supports. It enhances the thread workflow but does not duplicate a core feature like unlimited history or self-hosting. Therefore the threat is medium.",
+      "evidence_quote": "Click the Summarize button on any engineering discussion thread to generate instant decision bullets, assigned owners, and follow-up action items without leaving your channel.",
+      "overlaps_roadmap_item": "Threads",
+      "confidence": 0.95
+    },
+    "strategist": {
+      "recommendation": "differentiate",
+      "actions": [
+        "Update the product website to feature a “Privacy‑First, Self‑Hosted” banner highlighting end‑to‑end encryption.",
+        "Release a new “Secure Thread” demo video showing how TeamChat protects discussion data during summarization.",
+        "Host a 30‑minute webinar for small engineering teams on secure collaboration, focusing on TeamChat’s simple setup and privacy controls.",
+        "Add a “Privacy & Compliance” milestone to the roadmap and assign the compliance team to monitor competitor’s feature adoption."
+      ],
+      "contests_analyst": true,
+      "contest_reason": "TeamChat’s self‑hosted, end‑to‑end encrypted deployment gives privacy guarantees that the competitor’s cloud‑only solution lacks, reducing the competitive threat."
+    },
+    "status": "confirmed",
+    "contested": true,
+    "models": {
+      "classifier": "groq:openai/gpt-oss-20b",
+      "analyst": "groq:openai/gpt-oss-20b",
+      "strategist": "groq:openai/gpt-oss-20b"
+    },
+    "ablation": "full",
+    "status_reason": "Feature launch verified and strategic action recorded.",
+    "tokens_approx": 2427
   }
 ]
