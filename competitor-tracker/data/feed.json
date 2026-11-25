@@ -1,1 +1,43 @@
-[]
+[
+  {
+    "event_id": "ac4db69ae310",
+    "competitor": "Locus",
+    "page": "changelog",
+    "as_of": "2026-12-03",
+    "detected_at": "2026-11-25T12:12:04.780851+00:00",
+    "classifier": {
+      "is_feature_launch": true,
+      "category": "new_feature",
+      "feature_name": "AI-powered chatbot summarization",
+      "confidence": 0.99
+    },
+    "analyst": {
+      "threat_level": "MEDIUM",
+      "reasoning": "The new AI-powered chatbot summarization helps users quickly understand lengthy conversations, which directly supports the channels and threads workflow that TeamChat already offers. While summarization is a convenience rather than a core feature, it still enhances the same communication workflow, making it a medium-level threat.",
+      "evidence_quote": "The company has introduced an AI-powered chatbot summarization feature that helps users quickly understand lengthy conversations and extract key information.",
+      "overlaps_roadmap_item": "Channels and threads",
+      "confidence": 0.9
+    },
+    "strategist": {
+      "recommendation": "differentiate",
+      "actions": [
+        "Launch a privacy-first marketing campaign that showcases TeamChat’s end-to-end encryption and zero-logging policy.",
+        "Develop an on-device summarization tool that runs locally, ensuring no data leaves the team’s infrastructure.",
+        "Create a dedicated privacy and security FAQ section in the help center to address concerns about AI data usage.",
+        "Organize a quarterly privacy audit and publish the results to reinforce trust with engineering teams."
+      ],
+      "contests_analyst": true,
+      "contest_reason": "TeamChat’s strong privacy focus and simple setup reduce the threat because customers who prioritize privacy may be reluctant to adopt AI summarization that could involve data sharing with third-party AI services."
+    },
+    "status": "confirmed",
+    "contested": true,
+    "models": {
+      "classifier": "groq:openai/gpt-oss-20b",
+      "analyst": "groq:openai/gpt-oss-20b",
+      "strategist": "groq:openai/gpt-oss-20b"
+    },
+    "ablation": "full",
+    "status_reason": "Feature launch verified and strategic action recorded.",
+    "tokens_approx": 2453
+  }
+]
