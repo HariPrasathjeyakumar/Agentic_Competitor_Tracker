@@ -80,5 +80,28 @@
     "ablation": "full",
     "status_reason": "Feature launch verified and strategic action recorded.",
     "tokens_approx": 2402
+  },
+  {
+    "event_id": "f7597f95dc5e",
+    "competitor": "Locus",
+    "page": "changelog",
+    "as_of": "2026-11-28",
+    "detected_at": "2026-11-28T06:26:56.759428+00:00",
+    "classifier": {
+      "is_feature_launch": false,
+      "category": "blog_noise",
+      "feature_name": null,
+      "confidence": 0.9
+    },
+    "analyst": null,
+    "strategist": null,
+    "status": "dismissed",
+    "contested": false,
+    "models": {
+      "classifier": "groq:openai/gpt-oss-20b"
+    },
+    "ablation": "full",
+    "status_reason": "Classified as blog_noise (not a feature launch).",
+    "tokens_approx": 809
   }
 ]

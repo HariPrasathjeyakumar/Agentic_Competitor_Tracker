@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-26",
+  "as_of": "2026-11-28",
   "ablation": "full",
   "dry_run": false,
   "pages_checked": 2,
@@ -7,58 +7,40 @@
   "below_threshold": 1,
   "changed_events": 1,
   "counts": {
-    "confirmed": 1,
-    "dismissed": 0,
+    "confirmed": 0,
+    "dismissed": 1,
     "invalid_evidence": 0,
     "parse_failed": 0
   },
-  "llm_calls": 3,
-  "approx_tokens": 2402,
+  "llm_calls": 1,
+  "approx_tokens": 809,
   "events": [
     {
-      "event_id": "4093012a48bd",
+      "event_id": "f7597f95dc5e",
       "competitor": "Locus",
       "page": "changelog",
-      "as_of": "2026-11-26",
-      "detected_at": "2026-11-25T13:56:42.357672+00:00",
+      "as_of": "2026-11-28",
+      "detected_at": "2026-11-28T06:26:56.759428+00:00",
       "classifier": {
-        "is_feature_launch": true,
-        "category": "new_feature",
-        "feature_name": "two-way Slack and Microsoft Teams sync",
-        "confidence": 0.97
-      },
-      "analyst": {
-        "threat_level": "MEDIUM",
-        "reasoning": "Locus’s launch adds a two‑way sync between Slack and Microsoft Teams, which is an integration capability that TeamChat also supports (integrations with GitHub and Jira). The new feature does not duplicate a key TeamChat feature but expands the integration workflow, making it a medium‑level threat.",
-        "evidence_quote": "The new integration enables seamless two-way synchronization between Slack and Microsoft Teams, allowing messages and updates to stay consistent across both platforms.",
-        "overlaps_roadmap_item": "Integrations with GitHub and Jira",
+        "is_feature_launch": false,
+        "category": "blog_noise",
+        "feature_name": null,
         "confidence": 0.9
       },
-      "strategist": {
-        "recommendation": "differentiate",
-        "actions": [
-          "Launch a privacy‑first marketing campaign showcasing end‑to‑end encryption and data residency",
-          "Publish a Zero‑Setup onboarding guide to reduce friction for new teams",
-          "Release a compliance whitepaper comparing TeamChat’s GDPR/SOC 2 certifications with competitors",
-          "Host a quarterly privacy‑focused webinar series featuring engineering teams using TeamChat"
-        ],
-        "contests_analyst": true,
-        "contest_reason": "TeamChat’s privacy‑first architecture and effortless onboarding give it a competitive edge for privacy‑conscious engineering teams, reducing the impact of Locus’s Slack/Teams sync feature."
-      },
-      "status": "confirmed",
-      "contested": true,
+      "analyst": null,
+      "strategist": null,
+      "status": "dismissed",
+      "contested": false,
       "models": {
-        "classifier": "groq:openai/gpt-oss-20b",
-        "analyst": "groq:openai/gpt-oss-20b",
-        "strategist": "groq:openai/gpt-oss-20b"
+        "classifier": "groq:openai/gpt-oss-20b"
       },
       "ablation": "full",
-      "status_reason": "Feature launch verified and strategic action recorded.",
-      "tokens_approx": 2402
+      "status_reason": "Classified as blog_noise (not a feature launch).",
+      "tokens_approx": 809
     }
   ],
   "digests": [
-    "[MEDIUM] Locus: two-way Slack and Microsoft Teams sync (strategist: differentiate, contested: yes)"
+    "[DISMISSED] Locus: blog_noise (changelog)"
   ],
-  "ran_at": "2026-11-25T13:56:45.612744+00:00"
+  "ran_at": "2026-11-28T06:26:57.400619+00:00"
 }
