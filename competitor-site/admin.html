@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>NovaChat Admin</title>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 860px; margin: 2rem auto; padding: 0 1rem; color: #0f172a; }
+  fieldset { margin: 1rem 0; padding: 1rem; border: 1px solid #e2e8f0; }
+  label { display: block; margin: .5rem 0; }
+  input, textarea { width: 100%; padding: .5rem; font: inherit; box-sizing: border-box; }
+  button { margin: .5rem .5rem .5rem 0; padding: .5rem .9rem; }
+  .entry { border-bottom: 1px solid #e2e8f0; padding: .6rem 0; display: flex; justify-content: space-between; gap: 1rem; }
+  .date { font-family: monospace; color: #64748b; }
+  #status { white-space: pre-wrap; background: #f1f5f9; padding: .75rem; min-height: 2rem; }
+</style>
+</head>
+<body>
+<h1>NovaChat Changelog Admin</h1>
+<p>Adds, deletes and resets entries, then commits to GitHub. Vercel redeploys after each commit.</p>
+
+<fieldset>
+  <legend>Settings</legend>
+  <label>GitHub owner <input id="owner" value="HariPrasathjeyakumar"></label>
+  <label>Repository <input id="repo" value="Agentic_Competitor_Tracker"></label>
+  <label>Fine-grained token (Contents: read and write, this repo only) <input id="token" type="password"></label>
+  <label>Path to features file <input id="path" value="competitor-site/data/features.json"></label>
+  <button onclick="loadFeatures()">Load entries</button>
+</fieldset>
+
+<fieldset>
+  <legend>Add a feature</legend>
+  <label>Date <input id="date" type="date"></label>
+  <label>Title <input id="title" placeholder="Introducing ..."></label>
+  <label>Description <textarea id="desc" rows="3" placeholder="Starting today, ... available now."></textarea></label>
+  <button onclick="addFeature()">Add and publish</button>
+</fieldset>
+
+<fieldset>
+  <legend>Current entries</legend>
+  <div id="list"></div>
+  <button onclick="resetAll()">Reset to empty (publish)</button>
+</fieldset>
+
+<div id="status"></div>
+
+<script>
+const $ = id => document.getElementById(id);
+let features = [];
+let sha = null;
+
+function say(msg) { $('status').textContent = msg; }
+
+function api() {
+  const o = $('owner').value.trim(), r = $('repo').value.trim(), p = $('path').value.trim();
+  return `https://api.github.com/repos/${o}/${r}/contents/${p}`;
+}
+
+function headers() {
+  return { 'Authorization': 'Bearer ' + $('token').value.trim(), 'Accept': 'application/vnd.github+json' };
+}
+
+async function loadFeatures() {
+  say('Loading...');
+  const res = await fetch(api(), { headers: headers() });
+  if (!res.ok) { say('Load failed: ' + res.status + ' (check token and repo)'); return; }
+  const data = await res.json();
+  sha = data.sha;
+  features = JSON.parse(atob(data.content.replace(/\n/g, '')));
+  render();
+  say('Loaded ' + features.length + ' entries.');
+}
+
+function render() {
+  $('list').innerHTML = features
+    .slice().sort((a, b) => b.date.localeCompare(a.date))
+    .map((f, i) => `<div class="entry"><div><span class="date">${f.date}</span> <strong>${esc(f.title)}</strong><br>${esc(f.description)}</div><button onclick="removeFeature(${i})">Delete</button></div>`)
+    .join('') || '<p>No entries.</p>';
+}
+
+function esc(s) { return s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+async function publish(message) {
+  const body = JSON.stringify(features, null, 2) + '\n';
+  const content = btoa(unescape(encodeURIComponent(body)));
+  const res = await fetch(api(), {
+    method: 'PUT',
+    headers: { ...headers(), 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message, content, sha })
+  });
+  if (!res.ok) { say('Publish failed: ' + res.status + ' ' + (await res.text())); return false; }
+  const out = await res.json();
+  sha = out.content.sha;
+  return true;
+}
+
+async function addFeature() {
+  const f = { date: $('date').value, title: $('title').value.trim(), description: $('desc').value.trim() };
+  if (!f.date || !f.title || !f.description) { say('Fill in date, title and description.'); return; }
+  if (!features.length && !sha) { say('Load entries first.'); return; }
+  features.push(f);
+  say('Publishing...');
+  if (await publish('Add feature: ' + f.title)) { render(); say('Added and published. Vercel will redeploy in about a minute.'); }
+  else { features.pop(); }
+}
+
+async function removeFeature(i) {
+  const sorted = features.slice().sort((a, b) => b.date.localeCompare(a.date));
+  const target = sorted[i];
+  const idx = features.indexOf(target);
+  const removed = features.splice(idx, 1)[0];
+  say('Publishing...');
+  if (await publish('Delete feature: ' + removed.title)) { render(); say('Deleted and published.'); }
+  else { features.splice(idx, 0, removed); }
+}
+
+async function resetAll() {
+  if (!confirm('Remove all entries from the public changelog?')) return;
+  const backup = features;
+  features = [];
+  say('Publishing...');
+  if (await publish('Reset changelog to empty')) { render(); say('Reset and published.'); }
+  else { features = backup; }
+}
+</script>
+</body>
+</html>
