@@ -1,1 +1,43 @@
-[]
+[
+  {
+    "event_id": "121e74fc907e",
+    "competitor": "Locus",
+    "page": "changelog",
+    "as_of": "2026-11-30",
+    "detected_at": "2026-11-28T06:50:59.436494+00:00",
+    "classifier": {
+      "is_feature_launch": true,
+      "category": "new_feature",
+      "feature_name": "AI-powered meeting notes",
+      "confidence": 0.99
+    },
+    "analyst": {
+      "threat_level": "MEDIUM",
+      "reasoning": "Locus’s AI‑powered meeting notes add a new capability that operates within TeamChat’s existing channels and threads workflow. It does not duplicate a core feature such as file sharing or integrations, but it enhances the same communication channels TeamChat already supports, thereby improving a workflow TeamChat serves. According to the rules, this qualifies as a MEDIUM threat.",
+      "evidence_quote": "Starting today, Team plan members can generate AI meeting notes from any channel thread, with decisions and action items extracted automatically and posted back to the thread.",
+      "overlaps_roadmap_item": "Channels and threads",
+      "confidence": 0.9
+    },
+    "strategist": {
+      "recommendation": "differentiate",
+      "actions": [
+        "Highlight TeamChat’s end‑to‑end encryption and zero‑logging policy in all marketing materials and onboarding flows.",
+        "Release a local‑only storage option for sensitive files to reinforce privacy advantage.",
+        "Launch a targeted outreach campaign to engineering teams that prioritize compliance, showcasing TeamChat’s privacy certifications.",
+        "Host a privacy and security webinar with industry experts to position TeamChat as the privacy‑first choice."
+      ],
+      "contests_analyst": true,
+      "contest_reason": "TeamChat’s end‑to‑end encryption and zero‑logging policy give it a privacy advantage that Locus’s AI meeting notes do not address, reducing the competitive threat."
+    },
+    "status": "confirmed",
+    "contested": true,
+    "models": {
+      "classifier": "groq:openai/gpt-oss-20b",
+      "analyst": "groq:openai/gpt-oss-20b",
+      "strategist": "groq:openai/gpt-oss-20b"
+    },
+    "ablation": "full",
+    "status_reason": "Feature launch verified and strategic action recorded.",
+    "tokens_approx": 2489
+  }
+]
