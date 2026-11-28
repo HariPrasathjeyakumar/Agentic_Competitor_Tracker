@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-29",
+  "as_of": "2026-11-30",
   "ablation": "full",
   "dry_run": false,
   "pages_checked": 2,
@@ -7,40 +7,58 @@
   "below_threshold": 1,
   "changed_events": 1,
   "counts": {
-    "confirmed": 0,
-    "dismissed": 1,
+    "confirmed": 1,
+    "dismissed": 0,
     "invalid_evidence": 0,
     "parse_failed": 0
   },
-  "llm_calls": 1,
-  "approx_tokens": 808,
+  "llm_calls": 3,
+  "approx_tokens": 2410,
   "events": [
     {
-      "event_id": "e96493a4812f",
+      "event_id": "53c47d15620f",
       "competitor": "Locus",
       "page": "changelog",
-      "as_of": "2026-11-29",
-      "detected_at": "2026-11-28T06:32:00.633661+00:00",
+      "as_of": "2026-11-30",
+      "detected_at": "2026-11-28T06:36:51.749289+00:00",
       "classifier": {
-        "is_feature_launch": false,
-        "category": "blog_noise",
-        "feature_name": null,
+        "is_feature_launch": true,
+        "category": "new_feature",
+        "feature_name": "AI meeting notes",
+        "confidence": 0.99
+      },
+      "analyst": {
+        "threat_level": "MEDIUM",
+        "reasoning": "The AI meeting notes feature adds a new capability to the thread workflow that TeamChat already supports. It does not duplicate a key feature such as file sharing or integrations, but it enhances the existing thread functionality, making it a medium-level threat.",
+        "evidence_quote": "Starting today, Team plan members can generate AI meeting notes from any channel thread, with decisions and action items extracted automatically and posted back to the thread.",
+        "overlaps_roadmap_item": "Channels and threads",
         "confidence": 0.9
       },
-      "analyst": null,
-      "strategist": null,
-      "status": "dismissed",
-      "contested": false,
+      "strategist": {
+        "recommendation": "differentiate",
+        "actions": [
+          "Promote TeamChat’s end‑to‑end encryption and privacy‑first policy in all marketing materials to reinforce our privacy advantage.",
+          "Launch a 5‑minute quick‑start guide with pre‑configured engineering templates to showcase our simple setup.",
+          "Offer a limited‑time free trial of our advanced integrations with GitHub, Jira, and Confluence to highlight integration strength.",
+          "Run a customer feedback survey focused on AI meeting‑notes usage to identify pain points and inform future roadmap."
+        ],
+        "contests_analyst": true,
+        "contest_reason": "TeamChat’s privacy‑first architecture and end‑to‑end encryption give customers a strong reason to stay, reducing the appeal of a competitor’s AI meeting‑notes feature that relies on data sharing."
+      },
+      "status": "confirmed",
+      "contested": true,
       "models": {
-        "classifier": "groq:openai/gpt-oss-20b"
+        "classifier": "groq:openai/gpt-oss-20b",
+        "analyst": "groq:openai/gpt-oss-20b",
+        "strategist": "groq:openai/gpt-oss-20b"
       },
       "ablation": "full",
-      "status_reason": "Classified as blog_noise (not a feature launch).",
-      "tokens_approx": 808
+      "status_reason": "Feature launch verified and strategic action recorded.",
+      "tokens_approx": 2410
     }
   ],
   "digests": [
-    "[DISMISSED] Locus: blog_noise (changelog)"
+    "[MEDIUM] Locus: AI meeting notes (strategist: differentiate, contested: yes)"
   ],
-  "ran_at": "2026-11-28T06:32:01.437066+00:00"
+  "ran_at": "2026-11-28T06:36:55.105500+00:00"
 }
