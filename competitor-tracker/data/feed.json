@@ -103,5 +103,28 @@
     "ablation": "full",
     "status_reason": "Classified as blog_noise (not a feature launch).",
     "tokens_approx": 809
+  },
+  {
+    "event_id": "e96493a4812f",
+    "competitor": "Locus",
+    "page": "changelog",
+    "as_of": "2026-11-29",
+    "detected_at": "2026-11-28T06:32:00.633661+00:00",
+    "classifier": {
+      "is_feature_launch": false,
+      "category": "blog_noise",
+      "feature_name": null,
+      "confidence": 0.9
+    },
+    "analyst": null,
+    "strategist": null,
+    "status": "dismissed",
+    "contested": false,
+    "models": {
+      "classifier": "groq:openai/gpt-oss-20b"
+    },
+    "ablation": "full",
+    "status_reason": "Classified as blog_noise (not a feature launch).",
+    "tokens_approx": 808
   }
 ]

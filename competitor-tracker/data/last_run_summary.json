@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-28",
+  "as_of": "2026-11-29",
   "ablation": "full",
   "dry_run": false,
   "pages_checked": 2,
@@ -13,14 +13,14 @@
     "parse_failed": 0
   },
   "llm_calls": 1,
-  "approx_tokens": 809,
+  "approx_tokens": 808,
   "events": [
     {
-      "event_id": "f7597f95dc5e",
+      "event_id": "e96493a4812f",
       "competitor": "Locus",
       "page": "changelog",
-      "as_of": "2026-11-28",
-      "detected_at": "2026-11-28T06:26:56.759428+00:00",
+      "as_of": "2026-11-29",
+      "detected_at": "2026-11-28T06:32:00.633661+00:00",
       "classifier": {
         "is_feature_launch": false,
         "category": "blog_noise",
@@ -36,11 +36,11 @@
       },
       "ablation": "full",
       "status_reason": "Classified as blog_noise (not a feature launch).",
-      "tokens_approx": 809
+      "tokens_approx": 808
     }
   ],
   "digests": [
     "[DISMISSED] Locus: blog_noise (changelog)"
   ],
-  "ran_at": "2026-11-28T06:26:57.400619+00:00"
+  "ran_at": "2026-11-28T06:32:01.437066+00:00"
 }
